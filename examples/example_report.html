@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>FX-CPM — Türkiye</title>
+<style>
+:root {
+  color-scheme: dark;
+  --page: #07111b;
+  --page-raised: #0a1622;
+  --paper: #0d1925;
+  --panel: #112131;
+  --panel-quiet: #0c1a27;
+  --ink: #f4f1e8;
+  --ink-soft: #d7dce0;
+  --muted: #b7c3cf;
+  --line: #43586c;
+  --line-strong: #667b8e;
+  --info: #6ecce6;
+  --low: #8cc8a9;
+  --watch: #dfc36f;
+  --elevated: #e2a06f;
+  --high: #dd806f;
+  --critical: #d76555;
+  --unknown: #aeb9c4;
+  --shadow: rgba(0, 0, 0, .26);
+  --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: Charter, "Bitstream Charter", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --content: 1420px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--page); }
+body {
+  margin: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  background-color: var(--page);
+  color: var(--ink);
+  font: 15px/1.58 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(110, 204, 230, .022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 204, 230, .018) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black 0, transparent 72%);
+}
+
+a { color: var(--info); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 3px solid var(--info); outline-offset: 3px; }
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: .75rem;
+  left: .75rem;
+  padding: .65rem 1rem;
+  color: var(--page);
+  background: var(--ink);
+  transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.js-only { display: none; }
+.js .js-only { display: inline-flex; }
+
+.report-header {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  background: var(--page-raised);
+}
+.report-header::after {
+  position: absolute;
+  right: max(2rem, calc((100vw - var(--content)) / 2));
+  bottom: -1px;
+  width: min(35vw, 420px);
+  height: 3px;
+  content: "";
+  background: var(--info);
+}
+.masthead {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  padding: 2.2rem 0 1.55rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(290px, .65fr);
+  gap: 4rem;
+  align-items: end;
+}
+.institution-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: 1.25rem;
+  color: var(--info);
+  font: 700 .7rem/1 var(--mono);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.institution-mark::before {
+  width: 34px;
+  height: 9px;
+  content: "";
+  border-top: 2px solid var(--info);
+  border-bottom: 1px solid var(--info);
+}
+h1, h2, h3, h4, p { margin-top: 0; }
+.report-title {
+  max-width: 900px;
+  margin-bottom: .7rem;
+  font: 400 clamp(3rem, 6.5vw, 6rem)/.84 var(--serif);
+  letter-spacing: -.065em;
+}
+.report-title .dash { color: var(--info); }
+.report-deck {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font: 400 clamp(1rem, 1.5vw, 1.24rem)/1.5 var(--serif);
+}
+.mode-block {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--line-strong);
+  border-left: 5px double var(--watch);
+  background: #0a1723;
+}
+.mode-block[data-validated="true"] { border-left-color: var(--info); }
+.kicker {
+  display: block;
+  margin-bottom: .5rem;
+  color: var(--muted);
+  font: 700 .67rem/1.25 var(--mono);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.mode-value {
+  margin: 0;
+  color: var(--ink);
+  font: 700 1.12rem/1.25 var(--mono);
+  letter-spacing: .04em;
+}
+.mode-note { margin: .7rem 0 0; color: var(--muted); font-size: .83rem; }
+.header-facts {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  padding: .45rem 0;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.7fr) repeat(3, minmax(145px, .75fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.header-fact { min-width: 0; padding: .85rem 1rem; background: var(--paper); }
+.header-fact strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: .94rem;
+  font-variant-numeric: tabular-nums;
+}
+.version-strip {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  padding: 0 0 1.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.version-chip {
+  display: inline-flex;
+  gap: .45rem;
+  padding: .35rem .55rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--page);
+  font: 650 .68rem/1.25 var(--mono);
+  letter-spacing: .025em;
+}
+.version-chip b { color: var(--ink); font-weight: 700; }
+
+.report-nav {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  border-bottom: 1px solid var(--line);
+  background: rgba(7, 17, 27, .97);
+}
+.report-nav__inner {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+}
+.report-nav ol {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  overflow: visible;
+  list-style: none;
+  scrollbar-width: thin;
+}
+.report-nav a {
+  display: block;
+  min-height: 2rem;
+  padding: .48rem .5rem;
+  color: var(--muted);
+  border-right: 1px solid rgba(67, 88, 108, .5);
+  font: 700 .58rem/1.15 var(--mono);
+  letter-spacing: .07em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.report-nav a:hover, .report-nav a:focus-visible { color: var(--ink); background: var(--panel); }
+.control-button {
+  flex: 0 0 auto;
+  align-items: center;
+  gap: .45rem;
+  padding: .55rem .7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font: 700 .7rem/1 var(--mono);
+  cursor: pointer;
+}
+.control-button:hover { border-color: var(--info); background: var(--panel); }
+
+main {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+}
+.report-section {
+  padding: clamp(2.35rem, 4vw, 4.15rem) 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 4rem;
+}
+.section-heading {
+  margin-bottom: 1.45rem;
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) minmax(240px, .55fr);
+  gap: 1.3rem;
+  align-items: start;
+}
+.section-number {
+  padding-top: .45rem;
+  color: var(--info);
+  font: 700 .78rem/1 var(--mono);
+  letter-spacing: .13em;
+}
+.section-title {
+  margin-bottom: 0;
+  font: 400 clamp(2rem, 4vw, 4.15rem)/.98 var(--serif);
+  letter-spacing: -.045em;
+}
+.section-intro {
+  margin: .35rem 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+.section-rule {
+  width: 100%;
+  height: 1px;
+  margin-top: .85rem;
+  background: linear-gradient(to right, var(--info) 0 18%, var(--line) 18% 100%);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+  gap: 2rem;
+}
+.executive-copy {
+  padding: 2rem;
+  border-top: 3px solid var(--info);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.executive-copy p { max-width: 78ch; }
+.lead { color: var(--ink); font: 400 1.32rem/1.55 var(--serif); }
+.caution-statement {
+  margin: 1.8rem 0 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px double var(--watch);
+  color: var(--ink-soft);
+  background: #111d27;
+  font-size: .88rem;
+}
+.overview-ledger { margin: 0; border-top: 1px solid var(--line); }
+.overview-ledger > div {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.overview-ledger dt { color: var(--muted); font: 700 .67rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.overview-ledger dd { margin: .4rem 0 0; color: var(--ink); }
+.limitation-callout {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 1.4rem;
+  padding: 1.2rem 1.35rem;
+  border: 1px dashed var(--watch);
+  background: repeating-linear-gradient(-45deg, rgba(223,195,111,.035) 0 8px, transparent 8px 16px);
+}
+.limitation-callout strong { color: var(--watch); font: 700 .72rem/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.limitation-callout p { margin: 0; color: var(--ink-soft); }
+
+.warning-stack { display: grid; gap: .8rem; }
+.warning-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-left-width: 5px;
+  background: var(--paper);
+  box-shadow: 0 12px 35px var(--shadow);
+}
+.warning-card[data-risk="low"] { border-left-color: var(--low); border-left-style: solid; }
+.warning-card[data-risk="watch"],
+.warning-card[data-risk="watch-uncalibrated"] { border-left-color: var(--watch); border-left-style: dashed; }
+.warning-card[data-risk="elevated"] { border-left-color: var(--elevated); border-left-style: double; }
+.warning-card[data-risk="high"] { border-left-color: var(--high); border-left-style: ridge; }
+.warning-card[data-risk="critical"] {
+  border-left-color: var(--critical);
+  border-left-style: double;
+  background-image: repeating-linear-gradient(135deg, rgba(215,101,85,.035) 0 7px, transparent 7px 15px);
+}
+.warning-card[data-risk="insufficient"], .warning-card[data-risk="out-of-domain"] {
+  border-left-color: var(--unknown);
+  border-left-style: dotted;
+}
+.warning-header {
+  padding: .78rem 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  background: rgba(7, 17, 27, .5);
+}
+.hazard-label { min-width: 0; display: flex; align-items: center; gap: .85rem; }
+.hazard-icon { flex: 0 0 auto; }
+.hazard-label h3 { margin: 0; font: 600 1.22rem/1.2 var(--serif); }
+.hazard-label p { margin: .25rem 0 0; color: var(--muted); font: 700 .7rem/1 var(--mono); text-transform: uppercase; }
+.severity-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .48rem .65rem;
+  border: 1px solid currentColor;
+  color: var(--watch);
+  background: var(--page);
+  font: 800 .7rem/1 var(--mono);
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+.severity-badge[data-risk="low"] { color: var(--low); }
+.severity-badge[data-risk="elevated"] { color: var(--elevated); border-style: double; }
+.severity-badge[data-risk="high"] { color: var(--high); border-width: 2px; }
+.severity-badge[data-risk="critical"] { color: var(--critical); border-style: double; border-width: 3px; }
+.severity-badge[data-risk="insufficient"], .severity-badge[data-risk="out-of-domain"] { color: var(--unknown); border-style: dotted; }
+.severity-symbol { font-size: 1rem; line-height: .6; }
+.warning-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 330px); }
+.warning-content { min-width: 0; padding: clamp(1rem, 1.8vw, 1.5rem); }
+.estimate-row { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem 2rem; }
+.estimate-block { min-width: 220px; }
+.estimate-value {
+  display: block;
+  color: var(--ink);
+  font: 400 clamp(2.7rem, 6vw, 5.2rem)/.9 var(--serif);
+  letter-spacing: -.045em;
+  font-variant-numeric: tabular-nums;
+}
+.estimate-label { display: block; margin-top: .75rem; color: var(--muted); font: 700 .67rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.metric-grid {
+  flex: 1;
+  min-width: 260px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(110px, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.metric-grid > div { min-width: 0; padding: .7rem .8rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.metric-grid dt { color: var(--muted); font-size: .71rem; }
+.metric-grid dd { margin: .2rem 0 0; color: var(--ink); font: 700 .96rem/1.35 var(--mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.warning-reading { margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+.reading-note { padding-top: .8rem; border-top: 1px solid var(--line); }
+.reading-note h4 { margin-bottom: .4rem; color: var(--muted); font: 700 .68rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.reading-note p { margin: 0; color: var(--ink-soft); }
+.evidence-spine {
+  position: relative;
+  min-width: 0;
+  padding: 1rem 1.1rem 1rem 2.25rem;
+  border-left: 1px solid var(--line);
+  background: var(--panel-quiet);
+}
+.evidence-spine::before {
+  position: absolute;
+  top: 1.8rem;
+  bottom: 1.8rem;
+  left: 1.25rem;
+  width: 2px;
+  content: "";
+  background: var(--info);
+}
+.evidence-spine h4 { margin-bottom: 1rem; color: var(--info); font: 800 .72rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.evidence-spine ol { margin: 0; padding: 0; list-style: none; }
+.evidence-spine li { position: relative; padding: 0 0 .9rem; }
+.evidence-spine li::before {
+  position: absolute;
+  top: .35rem;
+  left: -1.38rem;
+  width: 8px;
+  height: 8px;
+  content: "";
+  border: 2px solid var(--info);
+  background: var(--panel-quiet);
+}
+.spine-key { display: block; color: var(--muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; }
+.spine-value { display: block; margin-top: .15rem; color: var(--ink); font-size: .82rem; overflow-wrap: anywhere; }
+
+.table-region { width: 100%; overflow-x: auto; border: 1px solid var(--line); background: var(--paper); scrollbar-color: var(--line-strong) var(--page); }
+.table-region:focus-visible { outline-offset: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: .79rem; font-variant-numeric: tabular-nums; }
+caption { padding: .8rem 1rem; color: var(--muted); text-align: left; font: 700 .68rem/1.35 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+th, td { padding: .7rem .75rem; border-right: 1px solid rgba(67,88,108,.65); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { color: var(--ink); background: #142637; font: 750 .68rem/1.35 var(--mono); letter-spacing: .035em; text-transform: uppercase; }
+tbody th { min-width: 220px; color: var(--ink); background: var(--panel-quiet); text-transform: none; font-family: var(--sans); font-size: .79rem; letter-spacing: 0; }
+tbody tr:last-child > * { border-bottom: 0; }
+tr:hover > td, tr:hover > th { background-color: rgba(110, 204, 230, .045); }
+.matrix-table { min-width: 980px; }
+.matrix-cell { min-width: 125px; border-top: 3px solid var(--unknown); background: #0d1b28; }
+.matrix-cell[data-risk="low"] { border-top-color: var(--low); }
+.matrix-cell[data-risk="watch"], .matrix-cell[data-risk="watch-uncalibrated"] { border-top-color: var(--watch); border-top-style: dashed; }
+.matrix-cell[data-risk="elevated"] { border-top-color: var(--elevated); border-top-style: double; }
+.matrix-cell[data-risk="high"] { border-top-color: var(--high); }
+.matrix-cell[data-risk="critical"] { border-top-color: var(--critical); border-top-style: double; }
+.cell-estimate { display: block; color: var(--ink); font: 750 .93rem/1.2 var(--mono); }
+.cell-status { display: block; margin-top: .28rem; color: var(--muted); font-size: .68rem; }
+.cell-change { display: block; margin-top: .18rem; color: var(--ink-soft); font-size: .68rem; }
+.unsupported { color: var(--muted); background: repeating-linear-gradient(135deg, rgba(174,185,196,.035) 0 5px, transparent 5px 10px); }
+.sort-button { all: inherit; width: 100%; display: inline-flex; align-items: center; justify-content: space-between; gap: .5rem; cursor: pointer; }
+.sort-button::after { content: "↕"; color: var(--info); }
+.sort-button[aria-sort="ascending"]::after { content: "↑"; }
+.sort-button[aria-sort="descending"]::after { content: "↓"; }
+
+.chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.chart-panel, .analysis-panel {
+  min-width: 0;
+  break-inside: avoid;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.chart-panel__header, .panel-header { padding: 1rem 1.15rem; border-bottom: 1px solid var(--line); }
+.chart-panel__header h3, .panel-header h3 { margin: 0; font: 600 1.18rem/1.25 var(--serif); }
+.chart-panel__header p, .panel-header p { margin: .3rem 0 0; color: var(--muted); font-size: .76rem; }
+.chart-wrap { min-width: 0; padding: .8rem .8rem .3rem; }
+.chart { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--sans); }
+.chart--empty { border: 1px dashed var(--line); }
+.chart-note { margin: 0; padding: .8rem 1rem 1rem; color: var(--muted); font-size: .76rem; }
+.chart-data { margin: 0; border-top: 1px solid var(--line); }
+.chart-data summary { padding: .75rem 1rem; color: var(--info); font: 700 .68rem/1 var(--mono); cursor: pointer; }
+.chart-data .table-region { border-width: 1px 0 0; }
+.full-span { grid-column: 1 / -1; }
+
+.indicator-panel { padding: 1.2rem; border: 1px solid var(--line); background: var(--paper); }
+.indicator-panel + .indicator-panel { margin-top: 1rem; }
+.indicator-head { display: flex; gap: 1rem; align-items: start; justify-content: space-between; margin-bottom: 1rem; }
+.indicator-head h3 { margin: 0; font: 600 1.25rem/1.2 var(--serif); }
+.indicator-head p { margin: .2rem 0 0; color: var(--muted); font-size: .75rem; }
+.status-label { padding: .35rem .5rem; border: 1px solid var(--line-strong); color: var(--ink); font: 700 .65rem/1 var(--mono); text-transform: uppercase; }
+.indicator-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.indicator { min-width: 0; min-height: 94px; padding: .75rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.indicator .kicker { margin-bottom: .6rem; }
+.indicator-value { display: block; color: var(--ink); font: 600 1.17rem/1.2 var(--mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.indicator-note { display: block; margin-top: .35rem; color: var(--muted); font-size: .68rem; }
+.indicator.is-missing { background: repeating-linear-gradient(-45deg, rgba(174,185,196,.025) 0 5px, transparent 5px 10px); }
+.indicator.is-missing .indicator-value { color: var(--unknown); font: 650 .78rem/1.35 var(--sans); }
+.two-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.panel-body { padding: 1rem 1.15rem; }
+.panel-body > :last-child { margin-bottom: 0; }
+.definition-list { margin: 0; }
+.definition-list > div { display: grid; grid-template-columns: minmax(120px, .35fr) minmax(0, 1fr); gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--line); }
+.definition-list > div:last-child { border-bottom: 0; }
+.definition-list dt { color: var(--muted); font-size: .72rem; }
+.definition-list dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.quality-meter { width: 100%; height: 11px; border: 1px solid var(--line-strong); border-radius: 0; background: var(--page); }
+.quality-meter::-webkit-meter-bar { background: var(--page); border: 0; }
+.quality-meter::-webkit-meter-optimum-value { background: repeating-linear-gradient(90deg, var(--info) 0 8px, #38798d 8px 10px); }
+.quality-meter::-moz-meter-bar { background: var(--info); }
+.provenance-table { min-width: 1150px; }
+.source-link { max-width: 320px; overflow-wrap: anywhere; word-break: break-word; }
+.unsafe-url { color: var(--muted); }
+.limitations-list { margin: 0; padding: 0; counter-reset: limitations; list-style: none; border-top: 1px solid var(--line); }
+.limitations-list li { position: relative; padding: 1rem 1rem 1rem 4rem; border-bottom: 1px solid var(--line); background: var(--paper); }
+.limitations-list li::before { position: absolute; left: 1rem; top: 1rem; counter-increment: limitations; content: "L-" counter(limitations, decimal-leading-zero); color: var(--watch); font: 700 .7rem/1.5 var(--mono); }
+.empty-state { padding: 2rem; border: 1px dashed var(--line-strong); background: repeating-linear-gradient(-45deg, rgba(174,185,196,.025) 0 7px, transparent 7px 14px); }
+.empty-state h3 { margin-bottom: .4rem; font: 600 1.2rem/1.3 var(--serif); }
+.empty-state p { max-width: 72ch; margin: 0; color: var(--muted); }
+
+.report-footer {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  padding: 2.5rem 0 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  color: var(--muted);
+  font-size: .75rem;
+}
+.report-footer strong { color: var(--ink); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .report-section { animation: section-reveal .28s ease-out both; }
+  .report-section:nth-of-type(2n) { animation-delay: .04s; }
+  @keyframes section-reveal { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+}
+
+@media (max-width: 940px) {
+  .masthead { grid-template-columns: 1fr; gap: 2rem; }
+  .header-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-heading { grid-template-columns: 58px minmax(0, 1fr); }
+  .section-intro { grid-column: 2; }
+  .overview-grid, .chart-grid, .two-column { grid-template-columns: 1fr; }
+  .warning-layout { grid-template-columns: 1fr; }
+  .evidence-spine { border-top: 1px solid var(--line); border-left: 0; }
+  .indicator-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .report-nav ol { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 14px; }
+  .masthead, .header-facts, .version-strip, .report-nav__inner, main, .report-footer { width: min(calc(100% - 1.4rem), var(--content)); }
+  .masthead { padding-top: 2rem; }
+  .report-title { font-size: clamp(3rem, 18vw, 5rem); }
+  .header-facts { grid-template-columns: 1fr; }
+  .report-nav__inner { width: 100%; padding-left: .7rem; }
+  .report-nav { position: static; }
+  .report-nav__inner { grid-template-columns: 1fr; padding: 0 .7rem; }
+  .report-nav ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .report-nav a {
+    min-height: 2.45rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .report-nav .control-button { margin: 0 0 .55rem; justify-self: start; }
+  .report-section { padding: 2.6rem 0; }
+  .section-heading { grid-template-columns: 1fr; gap: .8rem; }
+  .section-intro { grid-column: 1; }
+  .section-title { font-size: 2.2rem; }
+  .section-number { padding-top: 0; }
+  .overview-grid { gap: 1rem; }
+  .executive-copy { padding: 1.25rem; }
+  .limitation-callout { grid-template-columns: 1fr; gap: .5rem; }
+  .warning-header { align-items: flex-start; flex-direction: column; }
+  .severity-badge { align-self: flex-start; }
+  .warning-content { padding: 1.1rem; }
+  .estimate-value { font-size: 3.35rem; }
+  .metric-grid, .warning-reading, .indicator-grid { grid-template-columns: 1fr; }
+  .evidence-spine { padding-left: 2.25rem; }
+  .definition-list > div { grid-template-columns: 1fr; gap: .25rem; }
+  .report-footer { grid-template-columns: 1fr; }
+}
+
+@page { size: A4 landscape; margin: 10mm; }
+@media print {
+  html, body {
+    width: auto !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    background: var(--page) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body::before { position: absolute; }
+  .screen-only, .js-only, .report-nav, .skip-link { display: none !important; }
+  .masthead, .header-facts, .version-strip, main, .report-footer { width: 100%; }
+  .masthead { padding-top: 0; }
+  .report-title { font-size: 54pt; }
+  .report-section { padding: 9mm 0; animation: none !important; break-before: auto; }
+  .section-heading { margin-bottom: 5mm; }
+  .section-title { font-size: 25pt; }
+  .warning-card, .chart-panel, .analysis-panel, .indicator-panel, .empty-state, .limitation-callout { break-inside: avoid; box-shadow: none; }
+  .warning-content { padding: 5mm; }
+  .chart-grid, .two-column { gap: 4mm; }
+  .chart-wrap { padding: 2mm; }
+  .table-region { overflow: visible; border-color: var(--line-strong); }
+  table, .matrix-table, .provenance-table { min-width: 0 !important; font-size: 7.2pt; }
+  th, td { padding: 2mm; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; }
+  details > * { display: block !important; }
+  details > summary { display: none !important; }
+  a { color: var(--ink); text-decoration: underline; }
+  .source-link { max-width: none; word-break: break-all; }
+  .report-footer { break-before: auto; border-top: 1px solid var(--line); }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to report content</a>
+
+    <header class="report-header" role="banner">
+      <div class="masthead">
+        <div>
+          <span class="institution-mark">Forecast · evidence · audit</span>
+          <h1 class="report-title">FX<span class="dash">—</span>CPM</h1>
+          <p class="report-deck">Foreign-exchange-informed, multi-hazard crisis early warning.
+          A research instrument for calibrated vigilance, not a declaration that a crisis will occur.</p>
+        </div>
+        <aside class="mode-block" data-validated="false" aria-label="Report mode">
+          <span class="kicker">Report mode</span>
+          <p class="mode-value">RESEARCH / UNCALIBRATED</p>
+          <p class="mode-note">Operational severity is capped at WATCH where calibration is not explicitly validated.</p>
+        </aside>
+      </div>
+      <div class="header-facts" aria-label="Report scope and dates">
+        <div class="header-fact"><span class="kicker">Countries / scope</span><strong>Türkiye</strong></div>
+        <div class="header-fact"><span class="kicker">Analysis date</span><strong>2024-01-31</strong></div>
+        <div class="header-fact"><span class="kicker">Generated</span><strong>2024-01-31T12:00:00Z</strong></div>
+        <div class="header-fact"><span class="kicker">Forecast records</span><strong>25</strong></div>
+      </div>
+      <div class="version-strip" aria-label="Report versions"><span class="version-chip"><span>Schema</span><b>1.0.0</b></span><span class="version-chip"><span>Model</span><b>0.1.0-demo</b></span><span class="version-chip"><span>Method</span><b>0.1.0</b></span><span class="version-chip"><span>Calibration</span><b>none</b></span><span class="version-chip"><span>Alert policy</span><b>0.1.0</b></span></div>
+    </header>
+    
+
+    <nav class="report-nav screen-only" aria-label="Report sections">
+      <div class="report-nav__inner">
+        <ol><li><a href="#overview"><span aria-hidden="true">01 / </span>Overview</a></li><li><a href="#warnings"><span aria-hidden="true">02 / </span>Warnings</a></li><li><a href="#hazard-matrix"><span aria-hidden="true">03 / </span>Hazard matrix</a></li><li><a href="#term-structure"><span aria-hidden="true">04 / </span>Term structure</a></li><li><a href="#fx-stress"><span aria-hidden="true">05 / </span>FX stress</a></li><li><a href="#vulnerability"><span aria-hidden="true">06 / </span>Vulnerability</a></li><li><a href="#history"><span aria-hidden="true">07 / </span>History</a></li><li><a href="#analogues"><span aria-hidden="true">08 / </span>Analogues</a></li><li><a href="#contributors"><span aria-hidden="true">09 / </span>Contributors</a></li><li><a href="#contagion"><span aria-hidden="true">10 / </span>Contagion</a></li><li><a href="#calibration"><span aria-hidden="true">11 / </span>Calibration</a></li><li><a href="#data-quality"><span aria-hidden="true">12 / </span>Data quality</a></li><li><a href="#methodology"><span aria-hidden="true">13 / </span>Method</a></li><li><a href="#sources"><span aria-hidden="true">14 / </span>Sources</a></li><li><a href="#limitations"><span aria-hidden="true">15 / </span>Limits</a></li></ol>
+        <button class="control-button js-only" type="button" id="print-report"
+          aria-label="Print or save this report as PDF">Print / PDF</button>
+      </div>
+    </nav>
+    
+<main id="main-content" tabindex="-1">
+    <section class="report-section" id="overview" aria-labelledby="overview-title">
+      <header class="section-heading"><span class="section-number" aria-hidden="true">01</span><div><h2 class="section-title" id="overview-title">Executive crisis overview</h2><div class="section-rule"></div></div><p class="section-intro">A disciplined reading order: estimate, historical comparison, direction, evidence quality, then limitations.</p></header>
+      <div class="overview-grid">
+        <article class="executive-copy">
+          <span class="kicker">Structured assessment</span>
+          <p class="lead">In this synthetic pipeline demonstration, FX at 24m has the largest uncalibrated risk estimate (42.5%). The historical comparison, changes, and contributors are fabricated fixtures used only to exercise report semantics.</p>
+          <p>Relative to the available benchmark: <strong>11.8% historical baseline</strong>. Recent direction:
+          <strong>+1.1 pp</strong>. Evidence confidence is
+          <strong>68.5%</strong>; calibration state is <strong>Uncalibrated / not validated</strong>.</p>
+          <p class="caution-statement"><strong>Caution.</strong> Forecasts are probabilistic early-warning
+          signals. They do not declare that a crisis will occur, establish causation, or reveal private intentions.</p>
+        </article>
+        <dl class="overview-ledger">
+          <div><dt>Most elevated available hazard</dt><dd>Currency / balance-of-payments crisis</dd></div>
+          <div><dt>Primary horizon</dt><dd>24 months</dd></div>
+          <div><dt>Largest disclosed deterioration</dt><dd>+1.1 pp</dd></div>
+          <div><dt>Strongest available FX signal</dt><dd>FX stress 91.0 percentile</dd></div>
+        </dl>
+        <aside class="limitation-callout" aria-label="Most important limitation">
+          <strong>Most important limitation</strong><p>No empirical training, held-out calibration, or validated alert threshold is attached; no value in this report is a current-country forecast.</p>
+        </aside>
+      </div>
+    </section>
+    <section class="report-section" id="warnings" aria-labelledby="warnings-title"><header class="section-heading"><span class="section-number" aria-hidden="true">02</span><div><h2 class="section-title" id="warnings-title">Active warning center</h2><div class="section-rule"></div></div><p class="section-intro">Risk magnitude and evidence quality stay connected through the vertical evidence spine. Text, symbol, and border pattern repeat every severity state.</p></header><div class="warning-stack">
+    <article class="warning-card" data-risk="watch-uncalibrated" aria-labelledby="warning-1-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 7.5h16M4 16.5h16M8 4.5 4 7.5l4 3M16 13.5l4 3-4 3"/></g></svg>
+          <div><h3 id="warning-1-title">Currency / balance-of-payments crisis</h3><p>Türkiye · 12 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="watch-uncalibrated"
+          data-operational-level="WATCH_UNCALIBRATED">
+          <span class="severity-symbol" aria-hidden="true">◇</span>Watch — uncalibrated
+          <span class="sr-only"> (WATCH_UNCALIBRATED)</span>
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">24.1%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>6.7%</dd></div>
+              <div><dt>Relative risk</dt><dd>3.6×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+1.1 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>87.6 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Exchange-market pressure</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Currency / balance-of-payments crisis">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">24.1%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">6.7%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="watch-uncalibrated" aria-labelledby="warning-2-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="m3 9 9-5 9 5M5 10v7m4-7v7m6-7v7m4-7v7M3 20h18"/></g></svg>
+          <div><h3 id="warning-2-title">Systemic banking crisis</h3><p>Türkiye · 36 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="watch-uncalibrated"
+          data-operational-level="WATCH_UNCALIBRATED">
+          <span class="severity-symbol" aria-hidden="true">◇</span>Watch — uncalibrated
+          <span class="sr-only"> (WATCH_UNCALIBRATED)</span>
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">16.8%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>8.4%</dd></div>
+              <div><dt>Relative risk</dt><dd>2.0×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.6 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>70.0 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Real credit growth</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Systemic banking crisis">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">16.8%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">8.4%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="watch-uncalibrated" aria-labelledby="warning-3-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3 3.5 19h17zM12 8v5m0 3v.1"/></g></svg>
+          <div><h3 id="warning-3-title">Sovereign distress / default crisis</h3><p>Türkiye · 24 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="watch-uncalibrated"
+          data-operational-level="WATCH_UNCALIBRATED">
+          <span class="severity-symbol" aria-hidden="true">◇</span>Watch — uncalibrated
+          <span class="sr-only"> (WATCH_UNCALIBRATED)</span>
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">12.2%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>4.9%</dd></div>
+              <div><dt>Relative risk</dt><dd>2.5×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.8 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>75.5 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Foreign-currency debt burden</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Sovereign distress / default crisis">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">12.2%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">4.9%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="watch-uncalibrated" aria-labelledby="warning-4-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3 3.5 19h17zM12 8v5m0 3v.1"/></g></svg>
+          <div><h3 id="warning-4-title">Monetary / inflation crisis</h3><p>Türkiye · 12 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="watch-uncalibrated"
+          data-operational-level="WATCH_UNCALIBRATED">
+          <span class="severity-symbol" aria-hidden="true">◇</span>Watch — uncalibrated
+          <span class="sr-only"> (WATCH_UNCALIBRATED)</span>
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">22.0%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>7.1%</dd></div>
+              <div><dt>Relative risk</dt><dd>3.1×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.9 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>82.1 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Inflation acceleration</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Monetary / inflation crisis">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">22.0%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">7.1%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="watch-uncalibrated" aria-labelledby="warning-5-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3 3.5 19h17zM12 8v5m0 3v.1"/></g></svg>
+          <div><h3 id="warning-5-title">Major political-instability crisis</h3><p>Türkiye · 12 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="watch-uncalibrated"
+          data-operational-level="WATCH_UNCALIBRATED">
+          <span class="severity-symbol" aria-hidden="true">◇</span>Watch — uncalibrated
+          <span class="sr-only"> (WATCH_UNCALIBRATED)</span>
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">7.8%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>5.2%</dd></div>
+              <div><dt>Relative risk</dt><dd>1.5×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.4 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>64.5 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Government-stability indicator</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Major political-instability crisis">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">7.8%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">5.2%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="low" aria-labelledby="warning-6-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="m4 9 8-5 8 5M6 10v8m12-8v8M3 20h18M10 10v8m4-8v8"/></g></svg>
+          <div><h3 id="warning-6-title">Coup / unconstitutional government-change risk</h3><p>Türkiye · 12 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="low"
+          data-operational-level="LOW">
+          <span class="severity-symbol" aria-hidden="true">○</span>No operational alert — uncalibrated
+          
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">0.7%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>0.8%</dd></div>
+              <div><dt>Relative risk</dt><dd>0.8×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.3 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>57.4 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Recent unconstitutional-change history</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Coup / unconstitutional government-change risk">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">0.7%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">0.8%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="low" aria-labelledby="warning-7-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3 3.5 19h17zM12 8v5m0 3v.1"/></g></svg>
+          <div><h3 id="warning-7-title">Internal armed-conflict onset / escalation</h3><p>Türkiye · 12 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="low"
+          data-operational-level="LOW">
+          <span class="severity-symbol" aria-hidden="true">○</span>No operational alert — uncalibrated
+          
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">1.4%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>1.6%</dd></div>
+              <div><dt>Relative risk</dt><dd>0.8×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.3 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>57.4 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Neighbor conflict exposure</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Internal armed-conflict onset / escalation">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">1.4%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">1.6%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    
+    <article class="warning-card" data-risk="low" aria-labelledby="warning-8-title">
+      <header class="warning-header">
+        <div class="hazard-label">
+          <svg class="hazard-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 3 3.5 19h17zM12 8v5m0 3v.1"/></g></svg>
+          <div><h3 id="warning-8-title">Interstate armed-conflict onset / escalation</h3><p>Türkiye · 12 months</p></div>
+        </div>
+        <span class="severity-badge" data-risk="low"
+          data-operational-level="LOW">
+          <span class="severity-symbol" aria-hidden="true">○</span>No operational alert — uncalibrated
+          
+        </span>
+      </header>
+      <div class="warning-layout">
+        <div class="warning-content">
+          <div class="estimate-row">
+            <div class="estimate-block"><span class="estimate-value">0.3%</span>
+              <span class="estimate-label">Uncalibrated risk estimate</span></div>
+            <dl class="metric-grid">
+              <div><dt>Historical base rate</dt><dd>0.4%</dd></div>
+              <div><dt>Relative risk</dt><dd>0.8×</dd></div>
+              <div><dt>30-day momentum</dt><dd>+0.3 pp</dd></div>
+              <div><dt>Historical percentile</dt><dd>57.4 percentile</dd></div>
+            </dl>
+          </div>
+          <div class="warning-reading">
+            <div class="reading-note"><h4>Key predictive contributor</h4><p>Regional interstate tension</p></div>
+            <div class="reading-note"><h4>Caveat / contrary evidence</h4><p>Synthetic fixture; no empirical calibration or validated threshold.</p></div>
+          </div>
+        </div>
+        <aside class="evidence-spine" aria-label="Evidence spine for Interstate armed-conflict onset / escalation">
+          <h4>Evidence spine</h4><ol><li><span class="spine-key">Uncalibrated risk estimate</span><span class="spine-value">0.3%</span></li><li><span class="spine-key">Historical base rate</span><span class="spine-value">0.4%</span></li><li><span class="spine-key">Evidence confidence</span><span class="spine-value">70.5%</span></li><li><span class="spine-key">Data coverage</span><span class="spine-value">82.0%</span></li><li><span class="spine-key">Calibration</span><span class="spine-value">Uncalibrated or validation not attested</span></li><li><span class="spine-key">Model tier</span><span class="spine-value">MACRO_FINANCIAL</span></li><li><span class="spine-key">Domain status</span><span class="spine-value">Domain not assessed</span></li><li><span class="spine-key">Evidence warning</span><span class="spine-value">CALIBRATION_WEAK</span></li></ol>
+        </aside>
+      </div>
+    </article>
+    </div></section><section class="report-section" id="hazard-matrix" aria-labelledby="matrix-title"><header class="section-heading"><span class="section-number" aria-hidden="true">03</span><div><h2 class="section-title" id="matrix-title">Multi-hazard horizon matrix</h2><div class="section-rule"></div></div><p class="section-intro">Every missing cell remains visibly missing; unsupported horizons are distinguished from absent observations.</p></header><div class="table-region" role="region" aria-label="Scrollable multi-hazard forecast matrix" tabindex="0"><table class="matrix-table" data-sortable><caption>Eight hazard families across supported forecast horizons. Cumulative long-horizon estimates are not directly comparable with short-horizon estimates.</caption><thead><tr><th scope="col">Hazard family</th><th scope="col">90 days</th><th scope="col">180 days</th><th scope="col">12 months</th><th scope="col">24 months</th><th scope="col">36 months</th></tr></thead><tbody><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 7.5h16M4 16.5h16M8 4.5 4 7.5l4 3M16 13.5l4 3-4 3"/></g></svg> Currency / balance-of-payments crisis</th><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">6.5%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+1.1 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">12.2%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+1.1 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">24.1%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+1.1 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">42.5%</span><span class="cell-status">Uncalibrated risk estimate · 68.5%</span><span class="cell-change">+1.1 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="m3 9 9-5 9 5M5 10v7m4-7v7m6-7v7m4-7v7M3 20h18"/></g></svg> Systemic banking crisis</th><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">6.2%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.6 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">11.8%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.6 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">16.8%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.6 pp · Watch — uncalibrated</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M5 4h14v16H5zM8 8h8M8 12h5M8 16h3"/><path d="m15 14 3 3"/></g></svg> Sovereign distress / default crisis</th><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">3.0%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.8 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">6.5%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.8 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">12.2%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.8 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 18 9 12l4 3 7-10M16 5h4v4"/><path d="M4 21h16"/></g></svg> Monetary / inflation crisis</th><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">6.5%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.9 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">11.8%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.9 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">22.0%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.9 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 18V6l8 3 8-3v12l-8 3zM12 9v12"/></g></svg> Major political-instability crisis</th><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">2.2%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.4 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">4.2%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.4 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">7.8%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.4 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="m4 9 8-5 8 5M6 10v8m12-8v8M3 20h18M10 10v8m4-8v8"/></g></svg> Coup / unconstitutional government-change risk</th><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.2%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.3%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.7%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="m4 19 6-6m4-4 6-6M6 3l15 15M3 6l15 15M4 3l3 1-3 3"/></g></svg> Internal armed-conflict onset / escalation</th><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.3%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.7%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">1.4%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr><tr><th scope="row"><svg class="hazard-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="#6ecce6" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M5 5 19 19M19 5 5 19M4 4l4 1-3 3m15-4-4 1 3 3"/></g></svg> Interstate armed-conflict onset / escalation</th><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.1%</span><span class="cell-status">Uncalibrated risk estimate · 74.6%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.2%</span><span class="cell-status">Uncalibrated risk estimate · 72.6%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell" data-risk="watch-uncalibrated"><span class="cell-estimate">0.3%</span><span class="cell-status">Uncalibrated risk estimate · 70.5%</span><span class="cell-change">+0.3 pp · Watch — uncalibrated</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td><td class="matrix-cell unsupported"><span class="cell-estimate">—</span><span class="cell-status">Not supported for this hazard</span></td></tr></tbody></table></div></section><section class="report-section" id="term-structure" aria-labelledby="term-title"><header class="section-heading"><span class="section-number" aria-hidden="true">04</span><div><h2 class="section-title" id="term-title">Probability / estimate term structure</h2><div class="section-rule"></div></div><p class="section-intro">Axes, units, uncertainty and calibration labels are rendered into the document; scripting is not required.</p></header><div class="chart-grid"><article class="chart-panel"><header class="chart-panel__header"><h3>Currency / balance-of-payments crisis</h3><p>Uncalibrated risk estimate across 4 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-1-currency-bop-title term-1-currency-bop-desc"><title id="term-1-currency-bop-title">Currency / balance-of-payments crisis term structure</title><desc id="term-1-currency-bop-desc">Uncalibrated risk estimate by horizon. 90 days: 6.5%; 180 days: 12.2%; 12 months: 24.1%; 24 months: 42.5%.</desc><defs><pattern id="term-1-currency-bop-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,169.6 268.0,156.8 478.0,130.3 688.0,89.5 688.0,133.2 478.0,155.2 268.0,169.4 58.0,176.2" fill="url(#term-1-currency-bop-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,173.2 268.0,163.7 478.0,144.0 688.0,113.5" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="169.2" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">90 days</text><text x="58.0" y="163.2" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">6.5%</text><rect x="264.0" y="159.7" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="268.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="268.0" y="153.7" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">12.2%</text><rect x="474.0" y="140.0" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="478.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="478.0" y="134.0" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">24.1%</text><rect x="684.0" y="109.5" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">24 months</text><text x="688.0" y="103.5" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">42.5%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Currency / balance-of-payments crisis term structure data" tabindex="0"><table><caption>Text alternative for Currency / balance-of-payments crisis term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">90 days</th><td>6.5%</td><td>4.7%–8.7%</td><td>1.8%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">180 days</th><td>12.2%</td><td>8.8%–16.4%</td><td>3.4%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>24.1%</td><td>17.4%–32.3%</td><td>6.7%</td><td>70.5%</td><td>Uncalibrated</td></tr><tr><th scope="row">24 months</th><td>42.5%</td><td>30.6%–56.9%</td><td>11.8%</td><td>68.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Systemic banking crisis</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-2-banking-title term-2-banking-desc"><title id="term-2-banking-title">Systemic banking crisis term structure</title><desc id="term-2-banking-desc">Uncalibrated risk estimate by horizon. 12 months: 6.2%; 24 months: 11.8%; 36 months: 16.8%.</desc><defs><pattern id="term-2-banking-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,170.2 373.0,157.8 688.0,146.6 688.0,163.9 373.0,169.9 58.0,176.6" fill="url(#term-2-banking-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,173.7 373.0,164.4 688.0,156.1" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="169.7" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="58.0" y="163.7" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">6.2%</text><rect x="369.0" y="160.4" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">24 months</text><text x="373.0" y="154.4" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">11.8%</text><rect x="684.0" y="152.1" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">36 months</text><text x="688.0" y="146.1" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">16.8%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Systemic banking crisis term structure data" tabindex="0"><table><caption>Text alternative for Systemic banking crisis term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">12 months</th><td>6.2%</td><td>4.5%–8.3%</td><td>3.1%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">24 months</th><td>11.8%</td><td>8.5%–15.8%</td><td>5.9%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">36 months</th><td>16.8%</td><td>12.1%–22.5%</td><td>8.4%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Sovereign distress / default crisis</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-3-sovereign-title term-3-sovereign-desc"><title id="term-3-sovereign-title">Sovereign distress / default crisis term structure</title><desc id="term-3-sovereign-desc">Uncalibrated risk estimate by horizon. 180 days: 3.0%; 12 months: 6.5%; 24 months: 12.2%.</desc><defs><pattern id="term-3-sovereign-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,177.3 373.0,169.5 688.0,156.7 688.0,169.4 373.0,176.2 58.0,180.4" fill="url(#term-3-sovereign-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,179.0 373.0,173.2 688.0,163.7" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="175.0" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="58.0" y="169.0" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">3.0%</text><rect x="369.0" y="169.2" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="373.0" y="163.2" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">6.5%</text><rect x="684.0" y="159.7" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">24 months</text><text x="688.0" y="153.7" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">12.2%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Sovereign distress / default crisis term structure data" tabindex="0"><table><caption>Text alternative for Sovereign distress / default crisis term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">180 days</th><td>3.0%</td><td>2.2%–4.0%</td><td>1.2%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>6.5%</td><td>4.7%–8.7%</td><td>2.6%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">24 months</th><td>12.2%</td><td>8.8%–16.4%</td><td>4.9%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Monetary / inflation crisis</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-4-inflation-title term-4-inflation-desc"><title id="term-4-inflation-title">Monetary / inflation crisis term structure</title><desc id="term-4-inflation-desc">Uncalibrated risk estimate by horizon. 90 days: 6.5%; 180 days: 11.8%; 12 months: 22.0%.</desc><defs><pattern id="term-4-inflation-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,169.5 373.0,157.8 688.0,135.0 688.0,157.7 373.0,169.9 58.0,176.2" fill="url(#term-4-inflation-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,173.2 373.0,164.4 688.0,147.5" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="169.2" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">90 days</text><text x="58.0" y="163.2" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">6.5%</text><rect x="369.0" y="160.4" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="373.0" y="154.4" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">11.8%</text><rect x="684.0" y="143.5" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="688.0" y="137.5" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">22.0%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Monetary / inflation crisis term structure data" tabindex="0"><table><caption>Text alternative for Monetary / inflation crisis term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">90 days</th><td>6.5%</td><td>4.7%–8.7%</td><td>2.1%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">180 days</th><td>11.8%</td><td>8.5%–15.8%</td><td>3.8%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>22.0%</td><td>15.8%–29.5%</td><td>7.1%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Major political-instability crisis</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-5-political-title term-5-political-desc"><title id="term-5-political-title">Major political-instability crisis term structure</title><desc id="term-5-political-desc">Uncalibrated risk estimate by horizon. 90 days: 2.2%; 180 days: 4.2%; 12 months: 7.8%.</desc><defs><pattern id="term-5-political-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,179.0 373.0,174.7 688.0,166.7 688.0,174.7 373.0,179.0 58.0,181.3" fill="url(#term-5-political-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,180.3 373.0,177.0 688.0,171.1" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="176.3" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">90 days</text><text x="58.0" y="170.3" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">2.2%</text><rect x="369.0" y="173.0" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="373.0" y="167.0" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">4.2%</text><rect x="684.0" y="167.1" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="688.0" y="161.1" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">7.8%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Major political-instability crisis term structure data" tabindex="0"><table><caption>Text alternative for Major political-instability crisis term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">90 days</th><td>2.2%</td><td>1.6%–3.0%</td><td>1.5%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">180 days</th><td>4.2%</td><td>3.0%–5.6%</td><td>2.8%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>7.8%</td><td>5.6%–10.4%</td><td>5.2%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Coup / unconstitutional government-change risk</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-6-coup-title term-6-coup-desc"><title id="term-6-coup-title">Coup / unconstitutional government-change risk term structure</title><desc id="term-6-coup-desc">Uncalibrated risk estimate by horizon. 90 days: 0.2%; 180 days: 0.3%; 12 months: 0.7%.</desc><defs><pattern id="term-6-coup-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,183.6 373.0,183.2 688.0,182.5 688.0,183.2 373.0,183.6 58.0,183.8" fill="url(#term-6-coup-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,183.7 373.0,183.4 688.0,182.9" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="179.7" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">90 days</text><text x="58.0" y="173.7" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.2%</text><rect x="369.0" y="179.4" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="373.0" y="173.4" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.3%</text><rect x="684.0" y="178.9" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="688.0" y="172.9" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.7%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Coup / unconstitutional government-change risk term structure data" tabindex="0"><table><caption>Text alternative for Coup / unconstitutional government-change risk term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">90 days</th><td>0.2%</td><td>0.1%–0.2%</td><td>0.2%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">180 days</th><td>0.3%</td><td>0.2%–0.5%</td><td>0.4%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>0.7%</td><td>0.5%–0.9%</td><td>0.8%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Internal armed-conflict onset / escalation</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-7-internal-conflict-title term-7-internal-conflict-desc"><title id="term-7-internal-conflict-title">Internal armed-conflict onset / escalation term structure</title><desc id="term-7-internal-conflict-desc">Uncalibrated risk estimate by horizon. 90 days: 0.3%; 180 days: 0.7%; 12 months: 1.4%.</desc><defs><pattern id="term-7-internal-conflict-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,183.2 373.0,182.5 688.0,181.0 688.0,182.4 373.0,183.2 58.0,183.6" fill="url(#term-7-internal-conflict-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,183.4 373.0,182.9 688.0,181.7" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="179.4" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">90 days</text><text x="58.0" y="173.4" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.3%</text><rect x="369.0" y="178.9" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="373.0" y="172.9" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.7%</text><rect x="684.0" y="177.7" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="688.0" y="171.7" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">1.4%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Internal armed-conflict onset / escalation term structure data" tabindex="0"><table><caption>Text alternative for Internal armed-conflict onset / escalation term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">90 days</th><td>0.3%</td><td>0.2%–0.5%</td><td>0.4%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">180 days</th><td>0.7%</td><td>0.5%–0.9%</td><td>0.8%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>1.4%</td><td>1.0%–1.8%</td><td>1.6%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article><article class="chart-panel"><header class="chart-panel__header"><h3>Interstate armed-conflict onset / escalation</h3><p>Uncalibrated risk estimate across 3 disclosed horizon(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 230" role="img" aria-labelledby="term-8-interstate-conflict-title term-8-interstate-conflict-desc"><title id="term-8-interstate-conflict-title">Interstate armed-conflict onset / escalation term structure</title><desc id="term-8-interstate-conflict-desc">Uncalibrated risk estimate by horizon. 90 days: 0.1%; 180 days: 0.2%; 12 months: 0.3%.</desc><defs><pattern id="term-8-interstate-conflict-uncertainty" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#6ecce6" stroke-width="1" opacity=".38"/></pattern></defs><line x1="58.0" y1="184.0" x2="688.0" y2="184.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="0"/><text x="48.0" y="188.0" fill="#b9c6d2" text-anchor="end" font-size="10">0%</text><line x1="58.0" y1="142.5" x2="688.0" y2="142.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="146.5" fill="#b9c6d2" text-anchor="end" font-size="10">25%</text><line x1="58.0" y1="101.0" x2="688.0" y2="101.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="105.0" fill="#b9c6d2" text-anchor="end" font-size="10">50%</text><line x1="58.0" y1="59.5" x2="688.0" y2="59.5" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="63.5" fill="#b9c6d2" text-anchor="end" font-size="10">75%</text><line x1="58.0" y1="18.0" x2="688.0" y2="18.0" stroke="#43576a" stroke-width=".8" stroke-dasharray="3 5"/><text x="48.0" y="22.0" fill="#b9c6d2" text-anchor="end" font-size="10">100%</text><polygon points="58.0,183.8 373.0,183.6 688.0,183.2 688.0,183.6 373.0,183.8 58.0,183.9" fill="url(#term-8-interstate-conflict-uncertainty)" stroke="#6ecce6" stroke-width=".7" opacity=".8"/><polyline points="58.0,183.9 373.0,183.7 688.0,183.4" fill="none" stroke="#6ecce6" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><rect x="54.0" y="179.9" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="58.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">90 days</text><text x="58.0" y="173.9" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.1%</text><rect x="369.0" y="179.7" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="373.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">180 days</text><text x="373.0" y="173.7" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.2%</text><rect x="684.0" y="179.4" width="8" height="8" fill="#f4f1e8" stroke="#6ecce6" stroke-width="2"/><text x="688.0" y="206.0" fill="#f4f1e8" text-anchor="middle" font-size="10">12 months</text><text x="688.0" y="173.4" fill="#f4f1e8" text-anchor="middle" font-size="10" font-weight="700">0.3%</text><text x="373.0" y="225" fill="#b9c6d2" text-anchor="middle" font-size="10">Forecast horizon</text></svg></div><details class="chart-data" open><summary>Chart data and uncertainty</summary><div class="table-region" role="region" aria-label="Interstate armed-conflict onset / escalation term structure data" tabindex="0"><table><caption>Text alternative for Interstate armed-conflict onset / escalation term structure</caption><thead><tr><th scope="col">Horizon</th><th scope="col">Estimate</th><th scope="col">Uncertainty interval</th><th scope="col">Base rate</th><th scope="col">Confidence</th><th scope="col">Calibration</th></tr></thead><tbody><tr><th scope="row">90 days</th><td>0.1%</td><td>0.1%–0.1%</td><td>0.1%</td><td>74.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">180 days</th><td>0.2%</td><td>0.1%–0.2%</td><td>0.2%</td><td>72.6%</td><td>Uncalibrated</td></tr><tr><th scope="row">12 months</th><td>0.3%</td><td>0.2%–0.5%</td><td>0.4%</td><td>70.5%</td><td>Uncalibrated</td></tr></tbody></table></div></details><p class="chart-note">Long-horizon cumulative estimates reflect longer exposure and should be compared with horizon-matched base rates.</p></article></div></section><section class="report-section" id="fx-stress" aria-labelledby="fx-title"><header class="section-heading"><span class="section-number" aria-hidden="true">05</span><div><h2 class="section-title" id="fx-title">FX market stress</h2><div class="section-rule"></div></div><p class="section-intro">Observed spot pressure stays distinct from global-factor-adjusted residual stress and slow-moving reserve constraints.</p></header><article class="indicator-panel"><header class="indicator-head"><div><h3>Türkiye</h3><p>FX market stress · as of 2024-01-31</p></div><span class="status-label">SYNTHETIC_FIXTURE</span></header><div class="indicator-grid"><div class="indicator"><span class="kicker">Spot behavior</span><span class="indicator-value">+6.1%</span><span class="indicator-note">AVAILABLE · %</span></div><div class="indicator"><span class="kicker">Residual FX stress</span><span class="indicator-value">1.8</span><span class="indicator-note">AVAILABLE · z</span></div><div class="indicator is-missing"><span class="kicker">Realized volatility</span><span class="indicator-value">Not available</span><span class="indicator-note">Explicitly missing</span></div><div class="indicator"><span class="kicker">Exchange-market pressure</span><span class="indicator-value">2.2</span><span class="indicator-note">AVAILABLE · z</span></div><div class="indicator"><span class="kicker">Reserve pressure</span><span class="indicator-value">-0.7</span><span class="indicator-note">AVAILABLE · z</span></div><div class="indicator is-missing"><span class="kicker">Parallel-market premium</span><span class="indicator-value">Not available</span><span class="indicator-note">NOT_APPLICABLE · %</span></div><div class="indicator is-missing"><span class="kicker">Option / forward indicator</span><span class="indicator-value">Not available</span><span class="indicator-note">MISSING · vol pts</span></div><div class="indicator"><span class="kicker">FX stress percentile</span><span class="indicator-value">91.0 percentile</span><span class="indicator-note">Historical distribution</span></div><div class="indicator"><span class="kicker">Currency regime</span><span class="indicator-value">MANAGED_FLOAT</span><span class="indicator-note">Interpretation context</span></div></div></article></section><section class="report-section" id="vulnerability" aria-labelledby="vulnerability-title"><header class="section-heading"><span class="section-number" aria-hidden="true">06</span><div><h2 class="section-title" id="vulnerability-title">Structural vulnerability &amp; risk momentum</h2><div class="section-rule"></div></div><p class="section-intro">Slow-moving balance-sheet exposure and changes in model output are shown as different analytical objects.</p></header><div class="two-column"><div><article class="indicator-panel"><header class="indicator-head"><div><h3>Türkiye</h3><p>Structural vulnerability · not an event forecast</p></div><span class="status-label">Structural layer</span></header><div class="indicator-grid"><div class="indicator"><span class="kicker">External balance</span><span class="indicator-value">68.0%</span><span class="indicator-note">DETERIORATING</span></div><div class="indicator"><span class="kicker">Reserve adequacy</span><span class="indicator-value">73.0%</span><span class="indicator-note">DETERIORATING</span></div><div class="indicator"><span class="kicker">Credit cycle</span><span class="indicator-value">49.0%</span><span class="indicator-note">STABLE</span></div><div class="indicator"><span class="kicker">Sovereign balance sheet</span><span class="indicator-value">58.0%</span><span class="indicator-note">DETERIORATING</span></div><div class="indicator"><span class="kicker">Inflation pressure</span><span class="indicator-value">77.0%</span><span class="indicator-note">DETERIORATING</span></div><div class="indicator"><span class="kicker">Political structure</span><span class="indicator-value">41.0%</span><span class="indicator-note">STABLE</span></div></div></article></div><div><div class="table-region" role="region" aria-label="Risk momentum by observation window" tabindex="0"><table data-sortable><caption>Change in risk estimate, percentage points</caption><thead><tr><th scope="col">Country / series</th><th scope="col">7 days</th><th scope="col">30 days</th><th scope="col">90 days</th><th scope="col">12 months</th></tr></thead><tbody><tr><th scope="row">Türkiye · Currency / balance-of-payments crisis · 24 months</th><td>+0.4 pp</td><td>+1.1 pp</td><td>+2.5 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Systemic banking crisis · 36 months</th><td>+0.3 pp</td><td>+0.6 pp</td><td>+1.4 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Sovereign distress / default crisis · 24 months</th><td>+0.3 pp</td><td>+0.8 pp</td><td>+1.8 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Monetary / inflation crisis · 12 months</th><td>+0.3 pp</td><td>+0.9 pp</td><td>+2.2 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Major political-instability crisis · 12 months</th><td>+0.3 pp</td><td>+0.4 pp</td><td>+1.1 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Coup / unconstitutional government-change risk · 12 months</th><td>+0.3 pp</td><td>+0.3 pp</td><td>+0.6 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Internal armed-conflict onset / escalation · 12 months</th><td>+0.3 pp</td><td>+0.3 pp</td><td>+0.6 pp</td><td>Not available</td></tr><tr><th scope="row">Türkiye · Interstate armed-conflict onset / escalation · 12 months</th><td>+0.3 pp</td><td>+0.3 pp</td><td>+0.6 pp</td><td>Not available</td></tr></tbody></table></div></div></div></section><section class="report-section" id="history" aria-labelledby="history-title"><header class="section-heading"><span class="section-number" aria-hidden="true">07</span><div><h2 class="section-title" id="history-title">Historical timeline</h2><div class="section-rule"></div></div><p class="section-intro">Historical estimates disclose whether they are reconstructed or could have been observed with the deployed model at the time.</p></header><article class="chart-panel full-span"><header class="chart-panel__header"><h3>Historical signal and documented onsets</h3><p>RECONSTRUCTED ESTIMATES · 1 onset marker(s)</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 760 285" role="img" aria-labelledby="historical-risk-title historical-risk-desc"><title id="historical-risk-title">Historical risk timeline</title><desc id="historical-risk-desc">Historical model estimates. 2023-02-28: 12.0% (RECONSTRUCTED); 2023-05-31: 15.0% (RECONSTRUCTED); 2023-08-31: 18.0% (RECONSTRUCTED); 2023-11-30: 21.0% (RECONSTRUCTED); 2024-01-31: 24.1% (RECONSTRUCTED). Documented event markers: currency 2018-08-13.</desc><line x1="54.0" y1="177.0" x2="728.0" y2="177.0" stroke="#43576a" stroke-width=".7" stroke-dasharray="3 5"/><text x="46.0" y="180.0" fill="#b9c6d2" text-anchor="end" font-size="9">0%</text><line x1="54.0" y1="138.2" x2="728.0" y2="138.2" stroke="#43576a" stroke-width=".7" stroke-dasharray="3 5"/><text x="46.0" y="141.2" fill="#b9c6d2" text-anchor="end" font-size="9">25%</text><line x1="54.0" y1="99.5" x2="728.0" y2="99.5" stroke="#43576a" stroke-width=".7" stroke-dasharray="3 5"/><text x="46.0" y="102.5" fill="#b9c6d2" text-anchor="end" font-size="9">50%</text><line x1="54.0" y1="60.8" x2="728.0" y2="60.8" stroke="#43576a" stroke-width=".7" stroke-dasharray="3 5"/><text x="46.0" y="63.8" fill="#b9c6d2" text-anchor="end" font-size="9">75%</text><line x1="54.0" y1="22.0" x2="728.0" y2="22.0" stroke="#43576a" stroke-width=".7" stroke-dasharray="3 5"/><text x="46.0" y="25.0" fill="#b9c6d2" text-anchor="end" font-size="9">100%</text><polyline points="54.0,158.4 222.5,153.8 391.0,149.1 559.5,144.4 728.0,139.6" fill="none" stroke="#6ecce6" stroke-width="2" stroke-dasharray="6 3"/><g class="event-onset event-onset--currency"><title>FX — 2018-08-13</title><line x1="54.0" y1="37.0" x2="54.0" y2="177.0" stroke="#db7564" stroke-width=".8" stroke-dasharray="2 4"/><g class="event-marker event-marker--currency"><path d="M49.0 35.0h10l-5-9z" fill="#db7564"/></g></g><text x="54.0" y="197.0" fill="#b9c6d2" text-anchor="middle" font-size="9">2023-02-28</text><text x="391.0" y="197.0" fill="#b9c6d2" text-anchor="middle" font-size="9">2023-08-31</text><text x="728.0" y="197.0" fill="#b9c6d2" text-anchor="middle" font-size="9">2024-01-31</text><line x1="54.0" y1="224" x2="82.0" y2="224" stroke="#6ecce6" stroke-width="2" stroke-dasharray="6 3"/><text x="90.0" y="228" fill="#b9c6d2" font-size="9">Reconstructed estimate</text><g class="event-marker event-marker--currency"><path d="M49.0 262.0h10l-5-9z" fill="#db7564"/></g><text x="64.0" y="261" fill="#b9c6d2" font-size="9">Currency onset</text><g class="event-marker event-marker--banking"><rect x="181.5" y="253.5" width="9" height="9" fill="none" stroke="#db7564" stroke-width="2"/></g><text x="196.0" y="261" fill="#b9c6d2" font-size="9">Banking onset</text><g class="event-marker event-marker--sovereign"><path d="M318.0 252.0l6 6-6 6-6-6z" fill="#db7564" fill-opacity=".72" stroke="#db7564"/></g><text x="328.0" y="261" fill="#b9c6d2" font-size="9">Sovereign onset</text><g class="event-marker event-marker--political"><circle cx="450.0" cy="258.0" r="5" fill="none" stroke="#db7564" stroke-width="2"/><circle cx="450.0" cy="258.0" r="1.5" fill="#db7564"/></g><text x="460.0" y="261" fill="#b9c6d2" font-size="9">Political onset</text><g class="event-marker event-marker--conflict"><path d="M577.0 253.0l10 10M587.0 253.0l-10 10" fill="none" stroke="#db7564" stroke-width="2"/></g><text x="592.0" y="261" fill="#b9c6d2" font-size="9">Conflict onset</text></svg></div><details class="chart-data" open><summary>Timeline data</summary><div class="table-region" role="region" aria-label="Historical timeline data" tabindex="0"><table><caption>Historical estimate text alternative</caption><thead><tr><th scope="col">Date</th><th scope="col">Estimate</th><th scope="col">Hazard</th><th scope="col">Vintage state</th></tr></thead><tbody><tr><th scope="row">2023-02-28</th><td>12.0%</td><td>FX</td><td>RECONSTRUCTED</td></tr><tr><th scope="row">2023-05-31</th><td>15.0%</td><td>FX</td><td>RECONSTRUCTED</td></tr><tr><th scope="row">2023-08-31</th><td>18.0%</td><td>FX</td><td>RECONSTRUCTED</td></tr><tr><th scope="row">2023-11-30</th><td>21.0%</td><td>FX</td><td>RECONSTRUCTED</td></tr><tr><th scope="row">2024-01-31</th><td>24.1%</td><td>FX</td><td>RECONSTRUCTED</td></tr><tr><th scope="row">2018-08-13</th><td>Not available</td><td>FX</td><td>SYNTHETIC_EVENT_FIXTURE</td></tr></tbody></table></div></details><details class="chart-data" open><summary>Crisis onset markers</summary><div class="table-region" role="region" aria-label="Documented crisis onset data" tabindex="0"><table><caption>Documented crisis onset markers</caption><thead><tr><th scope="col">Onset</th><th scope="col">Hazard</th><th scope="col">Label confidence</th><th scope="col">Notes / agreement</th></tr></thead><tbody><tr><th scope="row">2018-08-13</th><td>Currency / balance-of-payments crisis</td><td>Not available</td><td>Event onset embedded in the historical timeline</td></tr></tbody></table></div></details></article></section><section class="report-section" id="analogues" aria-labelledby="analogues-title"><header class="section-heading"><span class="section-number" aria-hidden="true">08</span><div><h2 class="section-title" id="analogues-title">Historical analogues</h2><div class="section-rule"></div></div><p class="section-intro">Comparable states offer context rather than a deterministic precedent; outcomes and evidence quality remain visible.</p></header><div class="table-region" role="region" aria-label="Historical analogue comparison" tabindex="0"><table data-sortable><caption>Nearest disclosed historical states. Similarity does not imply identical outcomes.</caption><thead><tr><th scope="col">Country</th><th scope="col">Period</th><th scope="col">Hazard</th><th scope="col">Similarity</th><th scope="col">Observed outcome</th><th scope="col">Evidence quality</th><th scope="col">Caveat</th></tr></thead><tbody><tr><th scope="row">Synthetic analogue A</th><td>2008-09-30</td><td>Unspecified hazard</td><td>0.8</td><td>No qualifying onset within 12 months</td><td>78.0%</td><td>Regime: MANAGED_FLOAT</td></tr><tr><th scope="row">Synthetic analogue B</th><td>2013-06-30</td><td>Currency / balance-of-payments crisis</td><td>0.8</td><td>Synthetic FX onset after 214 days</td><td>81.0%</td><td>Regime: MANAGED_FLOAT · Time to event: 214 days</td></tr><tr><th scope="row">Synthetic analogue C</th><td>2018-08-31</td><td>Monetary / inflation crisis</td><td>0.7</td><td>Synthetic monetary onset after 301 days</td><td>69.0%</td><td>Regime: CRAWLING_PEG · Time to event: 301 days</td></tr></tbody></table></div></section><section class="report-section" id="contributors" aria-labelledby="contributors-title"><header class="section-heading"><span class="section-number" aria-hidden="true">09</span><div><h2 class="section-title" id="contributors-title">Predictive Contributors</h2><div class="section-rule"></div></div><p class="section-intro">Model associations are separated into estimate-raising signals and contrary evidence, with an explicit non-causal interpretation.</p></header><article class="chart-panel full-span"><header class="chart-panel__header"><h3>Predictive Contributors</h3><p>Signed associations in the deployed model · not causes of crisis</p></header><div class="chart-wrap"><svg class="chart" viewBox="0 0 720 210" role="img" aria-labelledby="predictive-contributors-title predictive-contributors-desc"><title id="predictive-contributors-title">Predictive contributors</title><desc id="predictive-contributors-desc">Signed model contributions, not causal effects. Exchange-market pressure: +0.72; Residual FX depreciation: +0.48; Reserve adequacy deterioration: +0.36; Export momentum: -0.18.</desc><line x1="390.0" y1="22" x2="390.0" y2="186" stroke="#f4f1e8" stroke-width="1"/><text x="380.0" y="14" fill="#b9c6d2" text-anchor="end" font-size="10">Contrary evidence ←</text><text x="400.0" y="14" fill="#b9c6d2" text-anchor="start" font-size="10">→ Raises estimate</text><text x="108" y="44" fill="#f4f1e8" text-anchor="end" font-size="10">Exchange-market pressure</text><rect x="390.0" y="32" width="270.0" height="15" fill="#df9b69" fill-opacity=".68" stroke="#df9b69"/><text x="666.0" y="44" fill="#f4f1e8" text-anchor="start" font-size="10">+0.72</text><text x="108" y="71" fill="#f4f1e8" text-anchor="end" font-size="10">Residual FX depreciation</text><rect x="390.0" y="59" width="180.0" height="15" fill="#df9b69" fill-opacity=".68" stroke="#df9b69"/><text x="576.0" y="71" fill="#f4f1e8" text-anchor="start" font-size="10">+0.48</text><text x="108" y="98" fill="#f4f1e8" text-anchor="end" font-size="10">Reserve adequacy deterioration</text><rect x="390.0" y="86" width="135.0" height="15" fill="#df9b69" fill-opacity=".68" stroke="#df9b69"/><text x="531.0" y="98" fill="#f4f1e8" text-anchor="start" font-size="10">+0.36</text><text x="108" y="125" fill="#f4f1e8" text-anchor="end" font-size="10">Export momentum</text><rect x="322.5" y="113" width="67.5" height="15" fill="#77b9ce" fill-opacity=".68" stroke="#77b9ce" stroke-dasharray="4 2"/><text x="316.5" y="125" fill="#f4f1e8" text-anchor="end" font-size="10">-0.18</text></svg></div><details class="chart-data" open><summary>Contributor data and contrary evidence</summary><div class="table-region" role="region" aria-label="Predictive contributor data" tabindex="0"><table><caption>Signed predictive contributions; values are model contributions, not causal effects.</caption><thead><tr><th scope="col">Feature</th><th scope="col">Contribution</th><th scope="col">Direction</th><th scope="col">Evidence status</th></tr></thead><tbody><tr><th scope="row">Exchange-market pressure</th><td>0.720</td><td>Raises estimate</td><td>True</td></tr><tr><th scope="row">Residual FX depreciation</th><td>0.480</td><td>Raises estimate</td><td>True</td></tr><tr><th scope="row">Reserve adequacy deterioration</th><td>0.360</td><td>Raises estimate</td><td>True</td></tr><tr><th scope="row">Export momentum</th><td>-0.180</td><td>Contrary evidence</td><td>True</td></tr></tbody></table></div></details><p class="chart-note">Positive bars raise the reported estimate; dashed negative bars are contrary evidence. Neither direction establishes causation.</p></article></section><section class="report-section" id="contagion" aria-labelledby="contagion-title"><header class="section-heading"><span class="section-number" aria-hidden="true">10</span><div><h2 class="section-title" id="contagion-title">Regional / contagion context</h2><div class="section-rule"></div></div><p class="section-intro">Common-factor stress and transmission channels contextualize country estimates; an accessible table is always primary evidence.</p></header><article class="indicator-panel"><header class="indicator-head"><div><h3>Regional signal ledger</h3><p>Common shocks, peer conditions and transmission channels</p></div><span class="status-label">Context, not attribution</span></header><div class="indicator-grid"><div class="indicator"><span class="kicker">Regional state</span><span class="indicator-value">SYNTHETIC_FIXTURE</span><span class="indicator-note">Regional / network context</span></div><div class="indicator"><span class="kicker">Common-factor stress</span><span class="indicator-value">37.0%</span><span class="indicator-note">Regional / network context</span></div><div class="indicator"><span class="kicker">Network / contagion pressure</span><span class="indicator-value">31.0%</span><span class="indicator-note">Regional / network context</span></div><div class="indicator"><span class="kicker">Own-country pressure</span><span class="indicator-value">69.0%</span><span class="indicator-note">Regional / network context</span></div></div></article><div style="height:1rem"></div><div class="table-region" role="region" aria-label="Regional and contagion context table" tabindex="0"><table data-sortable><caption>Accessible regional and contagion comparison; estimates retain their disclosed calibration state.</caption><thead><tr><th scope="col">Country / peer</th><th scope="col">Region</th><th scope="col">Hazard</th><th scope="col">Risk estimate</th><th scope="col">Common-factor stress</th><th scope="col">Channel</th><th scope="col">Evidence</th></tr></thead><tbody><tr><th scope="row">Synthetic peer A</th><td>Peer set</td><td>Regional context</td><td>44.0%</td><td>37.0%</td><td>trade</td><td>SYNTHETIC_FIXTURE</td></tr><tr><th scope="row">Synthetic peer B</th><td>Peer set</td><td>Regional context</td><td>36.0%</td><td>37.0%</td><td>common anchor</td><td>SYNTHETIC_FIXTURE</td></tr><tr><th scope="row">Synthetic peer C</th><td>Peer set</td><td>Regional context</td><td>28.0%</td><td>37.0%</td><td>banking claims</td><td>SYNTHETIC_FIXTURE</td></tr></tbody></table></div></section><section class="report-section" id="calibration" aria-labelledby="calibration-title"><header class="section-heading"><span class="section-number" aria-hidden="true">11</span><div><h2 class="section-title" id="calibration-title">Calibration &amp; backtest</h2><div class="section-rule"></div></div><p class="section-intro">Reliability, proper scoring rules, historical event counts and FX ablation make probability claims auditable.</p></header><div class="chart-grid"><article class="chart-panel"><header class="chart-panel__header"><h3>Reliability</h3><p>Mean forecast against observed event rate</p></header><div class="chart-wrap"><svg class="chart chart--empty" viewBox="0 0 540 300" role="img" aria-labelledby="calibration-reliability-title calibration-reliability-desc"><title id="calibration-reliability-title">Calibration reliability</title><desc id="calibration-reliability-desc">No calibration bins are available.</desc><text x="270" y="150" fill="#b9c6d2" text-anchor="middle" font-size="14">Reliability data not available</text></svg></div><p class="chart-note">The diagonal is perfect calibration; distance from it is calibration error. Empty bins are not inferred.</p></article><article class="analysis-panel"><header class="panel-header"><h3>Calibration audit</h3><p>Performance is meaningful only for the disclosed hazard, horizon and out-of-sample window.</p></header><div class="indicator-grid"><div class="indicator"><span class="kicker">Calibration status</span><span class="indicator-value">NOT_FITTED</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator is-missing"><span class="kicker">Brier score</span><span class="indicator-value">Not available</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator is-missing"><span class="kicker">Log loss</span><span class="indicator-value">Not available</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator is-missing"><span class="kicker">PR-AUC</span><span class="indicator-value">Not available</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator is-missing"><span class="kicker">Historical base rate</span><span class="indicator-value">Not available</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator"><span class="kicker">Historical event count</span><span class="indicator-value">0.0</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator is-missing"><span class="kicker">Test period</span><span class="indicator-value">Not available</span><span class="indicator-note">Validation disclosure</span></div><div class="indicator is-missing"><span class="kicker">Calibration method</span><span class="indicator-value">Not available</span><span class="indicator-note">Validation disclosure</span></div></div></article><div class="full-span"><div class="empty-state" role="status"><h3>Backtest windows unavailable</h3><p>Crises detected, missed events, false alerts and warning lead times were not supplied.</p></div></div><div class="full-span"><article class="analysis-panel"><header class="panel-header"><h3>FX ablation</h3><p>Performance with and without the FX feature family</p></header><div class="indicator-grid"><div class="indicator is-missing"><span class="kicker">Δ average precision</span><span class="indicator-value">Not available</span><span class="indicator-note">With FX minus without FX</span></div><div class="indicator is-missing"><span class="kicker">Δ Brier score</span><span class="indicator-value">Not available</span><span class="indicator-note">With FX minus without FX</span></div><div class="indicator is-missing"><span class="kicker">Δ log loss</span><span class="indicator-value">Not available</span><span class="indicator-note">With FX minus without FX</span></div><div class="indicator is-missing"><span class="kicker">Test period</span><span class="indicator-value">Not available</span><span class="indicator-note">Out-of-sample window</span></div></div></article></div></div></section><section class="report-section" id="data-quality" aria-labelledby="quality-title"><header class="section-heading"><span class="section-number" aria-hidden="true">12</span><div><h2 class="section-title" id="quality-title">Data quality</h2><div class="section-rule"></div></div><p class="section-intro">Evidence coverage, freshness and provenance are isolated from economic risk so sparse data can never look reassuring.</p></header><div class="two-column"><div><article class="indicator-panel"><header class="indicator-head"><div><h3>Overall evidence quality</h3><p>Synthetic records do not represent real source coverage. · Historical values are labelled reconstructed, not true vintage. · Modern option-market evidence is missing.</p></div><span class="status-label">69 / 100</span></header><label class="kicker" for="quality-1">Composite data-quality score</label><meter class="quality-meter" id="quality-1" min="0" max="100" value="69.0">69 out of 100</meter><div style="height:1rem"></div><div class="indicator-grid"><div class="indicator"><span class="kicker">Coverage</span><span class="indicator-value">82.0%</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator"><span class="kicker">Freshness</span><span class="indicator-value">79.0%</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator"><span class="kicker">Source authority</span><span class="indicator-value">86.0%</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator"><span class="kicker">Source disagreement</span><span class="indicator-value">18.0%</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator"><span class="kicker">Historical depth</span><span class="indicator-value">66.0%</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator"><span class="kicker">Vintage quality</span><span class="indicator-value">45.0%</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator is-missing"><span class="kicker">Release lag</span><span class="indicator-value">Not available</span><span class="indicator-note">Evidence dimension</span></div><div class="indicator is-missing"><span class="kicker">Missing required fields</span><span class="indicator-value">Not available</span><span class="indicator-note">Evidence dimension</span></div></div></article></div><div><article class="indicator-panel"><header class="indicator-head"><div><h3>Source health</h3><p>Collection availability is an evidence property, not an economic outcome.</p></div><span class="status-label">Audit layer</span></header><div class="indicator-grid"><div class="indicator"><span class="kicker">Healthy sources</span><span class="indicator-value">5.0</span><span class="indicator-note">Source-health telemetry</span></div><div class="indicator"><span class="kicker">Stale sources</span><span class="indicator-value">1.0</span><span class="indicator-note">Source-health telemetry</span></div><div class="indicator"><span class="kicker">Failed sources</span><span class="indicator-value">0.0</span><span class="indicator-note">Source-health telemetry</span></div><div class="indicator"><span class="kicker">Source-health state</span><span class="indicator-value">DEMONSTRATION_ONLY</span><span class="indicator-note">Source-health telemetry</span></div></div></article></div></div></section><section class="report-section" id="methodology" aria-labelledby="methodology-title"><header class="section-heading"><span class="section-number" aria-hidden="true">13</span><div><h2 class="section-title" id="methodology-title">Methodology summary</h2><div class="section-rule"></div></div><p class="section-intro">Target, horizon, calibration, regime handling, thresholds and uncertainty are part of the forecast claim.</p></header><div class="two-column"><article class="analysis-panel"><header class="panel-header"><h3>Method at a glance</h3><p>Definitions are reported as supplied; the renderer does not infer scientific choices.</p></header><div class="panel-body"><p>Not available</p></div></article><article class="analysis-panel"><header class="panel-header"><h3>Reproducibility ledger</h3><p>Minimum interpretive details for an independent review</p></header><div class="panel-body"><dl class="definition-list"><div><dt>Event target</dt><dd>Not available</dd></div><div><dt>Forecast model</dt><dd>Not available</dd></div><div><dt>Forecast horizons</dt><dd>Not available</dd></div><div><dt>Calibration</dt><dd>Not available</dd></div><div><dt>Regime adjustment</dt><dd>Not available</dd></div><div><dt>Alert threshold</dt><dd>Not available</dd></div><div><dt>Uncertainty</dt><dd>Not available</dd></div><div><dt>Point-in-time policy</dt><dd>Not available</dd></div></dl></div></article></div></section><section class="report-section" id="sources" aria-labelledby="sources-title"><header class="section-heading"><span class="section-number" aria-hidden="true">14</span><div><h2 class="section-title" id="sources-title">Source / provenance appendix</h2><div class="section-rule"></div></div><p class="section-intro">Series, release date, retrieval date, vintage, status, URL and license remain attached to the evidence trail.</p></header><div class="table-region" role="region" aria-label="Scrollable source and provenance appendix" tabindex="0"><table class="provenance-table" data-sortable><caption>Source and vintage provenance appendix</caption><thead><tr><th scope="col">Source</th><th scope="col">Series</th><th scope="col">Period</th><th scope="col">Release date</th><th scope="col">Retrieval date</th><th scope="col">Vintage</th><th scope="col">Status</th><th scope="col" data-no-sort>URL</th><th scope="col">License</th></tr></thead><tbody><tr><th scope="row">FX-CPM synthetic fixture</th><td>demo.emp</td><td>2024-01-31</td><td>2024-01-31</td><td>2024-01-31</td><td>synthetic-v1</td><td>AVAILABLE</td><td><a class="source-link" href="https://example.invalid/fx-cpm/synthetic-fixture" rel="noopener noreferrer">https://example.invalid/fx-cpm/synthetic-fixture</a></td><td>CC0-1.0 synthetic fixture</td></tr><tr><th scope="row">FX-CPM synthetic fixture</th><td>demo.option_risk_reversal</td><td>2024-01-31</td><td>2024-01-31</td><td>2024-01-31</td><td>synthetic-v1</td><td>MISSING</td><td><a class="source-link" href="https://example.invalid/fx-cpm/synthetic-fixture" rel="noopener noreferrer">https://example.invalid/fx-cpm/synthetic-fixture</a></td><td>CC0-1.0 synthetic fixture</td></tr></tbody></table></div></section><section class="report-section" id="limitations" aria-labelledby="limitations-title"><header class="section-heading"><span class="section-number" aria-hidden="true">15</span><div><h2 class="section-title" id="limitations-title">Limitations</h2><div class="section-rule"></div></div><p class="section-intro">Known blind spots, point-in-time constraints and model-domain caveats are part of the result, not footnotes to it.</p></header><ol class="limitations-list"><li>Every numerical value and historical event in this example is synthetic.</li><li>No empirical event labels, training, final test, calibration, or alert-threshold validation were used.</li><li>Reconstructed point-in-time status is not a genuine real-time backtest.</li><li>Parallel-rate and option evidence are unavailable or not applicable in the fixture.</li><li>Hazards are dependent; no overall any-crisis probability is calculated.</li><li>Predictive contributors are associations and are not causal findings.</li></ol></section></main>
+
+    <footer class="report-footer">
+      <p><strong>FX-CPM research report.</strong> Probabilistic early-warning signals are not declarations,
+      causal findings, trading advice, or substitutes for expert country analysis.</p>
+      <p>Schema 1.0.0 · generated 2024-01-31T12:00:00Z</p>
+    </footer>
+    
+<script type="application/json" id="fx-cpm-report-data">{"alert_policy_version":"0.1.0","alerts":[{"base_rate":0.067,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"FX","historical_percentile":0.876,"horizon":"12m","key_reason":"Exchange-market pressure","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0108,"raw_estimate":0.2412,"relative_risk":3.6,"severity":"WATCH_UNCALIBRATED","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.084,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"BANK","historical_percentile":0.7,"horizon":"36m","key_reason":"Real credit growth","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.006,"raw_estimate":0.168,"relative_risk":2.0,"severity":"WATCH_UNCALIBRATED","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.049,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"SOV","historical_percentile":0.755,"horizon":"24m","key_reason":"Foreign-currency debt burden","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0075,"raw_estimate":0.1225,"relative_risk":2.5,"severity":"WATCH_UNCALIBRATED","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.071,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"MON","historical_percentile":0.821,"horizon":"12m","key_reason":"Inflation acceleration","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0093,"raw_estimate":0.2201,"relative_risk":3.1,"severity":"WATCH_UNCALIBRATED","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.052,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"POL","historical_percentile":0.645,"horizon":"12m","key_reason":"Government-stability indicator","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0045,"raw_estimate":0.078,"relative_risk":1.5,"severity":"WATCH_UNCALIBRATED","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.008,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"COUP","historical_percentile":0.574,"horizon":"12m","key_reason":"Recent unconstitutional-change history","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0026,"raw_estimate":0.0068,"relative_risk":0.85,"severity":"NO_ALERT","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.016,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"CIV","historical_percentile":0.574,"horizon":"12m","key_reason":"Neighbor conflict exposure","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0026,"raw_estimate":0.0136,"relative_risk":0.85,"severity":"NO_ALERT","threshold_methodology":null,"trigger_threshold":null},{"base_rate":0.004,"calibrated_probability":null,"calibration_status":"NOT_FITTED","caveat":"Synthetic fixture; no empirical calibration or validated threshold.","country":"Türkiye","data_coverage":0.82,"evidence_alerts":["CALIBRATION_WEAK"],"evidence_confidence":0.705,"first_seen":"2024-01-31","fx_regime":"MANAGED_FLOAT","hazard":"WAR","historical_percentile":0.574,"horizon":"12m","key_reason":"Regional interstate tension","last_changed":"2024-01-31","ood_status":"NOT_ASSESSED","probability_change":0.0026,"raw_estimate":0.0034,"relative_risk":0.85,"severity":"NO_ALERT","threshold_methodology":null,"trigger_threshold":null}],"analysis":{"analysis_date":"2024-01-31","countries_label":"Türkiye","executive_summary":"In this synthetic pipeline demonstration, FX at 24m has the largest uncalibrated risk estimate (42.5%). The historical comparison, changes, and contributors are fabricated fixtures used only to exercise report semantics.","generated_at":"2024-01-31T12:00:00Z","history_start":"2000-01-01","major_limitation":"No empirical training, held-out calibration, or validated alert threshold is attached; no value in this report is a current-country forecast.","network_policy":"DISABLED_BY_USER","point_in_time_status":"RECONSTRUCTED_POINT_IN_TIME","report_mode":"RESEARCH_UNCALIBRATED","seed_used":true,"web_accessed":false},"calibration":{"bins":[],"brier_score":null,"calibration_period":null,"event_count":0,"intercept":null,"log_loss":null,"message":"Numerical outputs are uncalibrated research estimates, not probabilities.","method":null,"slope":null,"status":"NOT_FITTED"},"calibration_version":"none","contagion":{"common_factor_pressure":0.37,"interpretation":"Network pressure is an association and is not evidence of direct contagion causation.","network_pressure":0.31,"own_country_pressure":0.69,"peers":[{"channel":"trade","country":"Synthetic peer A","risk_index":0.44},{"channel":"common anchor","country":"Synthetic peer B","risk_index":0.36},{"channel":"banking claims","country":"Synthetic peer C","risk_index":0.28}],"status":"SYNTHETIC_FIXTURE"},"countries":[{"anchor_currency_id":"USD","capital_controls":false,"country_id":"TR","coverage":0.82,"currency_id":"TRY","multiple_rates":false,"name":"Türkiye","regime":"MANAGED_FLOAT"}],"data_quality":{"coverage":0.82,"freshness":0.79,"historical_depth":0.66,"overall":0.69,"source_authority":0.86,"source_disagreement":0.18,"vintage_quality":0.45,"warnings":["Synthetic records do not represent real source coverage.","Historical values are labelled reconstructed, not true vintage.","Modern option-market evidence is missing."]},"forecasts":[{"analysis_date":"2024-01-31","base_rate":0.018,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.18,"direction":"DECREASES_ESTIMATE","feature":"Export momentum"}],"contributors":[{"available":true,"contribution":0.72,"direction":"INCREASES_ESTIMATE","feature":"Exchange-market pressure"},{"available":true,"contribution":0.48,"direction":"INCREASES_ESTIMATE","feature":"Residual FX depreciation"},{"available":true,"contribution":0.36,"direction":"INCREASES_ESTIMATE","feature":"Reserve adequacy deterioration"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"FX","historical_percentile":0.876,"horizon":"90d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0108,"7d":0.001,"90d":0.0252},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0648,"regime":"MANAGED_FLOAT","relative_risk":3.6,"training_end_date":null,"uncertainty_high":0.0868,"uncertainty_low":0.0467},{"analysis_date":"2024-01-31","base_rate":0.034,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.18,"direction":"DECREASES_ESTIMATE","feature":"Export momentum"}],"contributors":[{"available":true,"contribution":0.72,"direction":"INCREASES_ESTIMATE","feature":"Exchange-market pressure"},{"available":true,"contribution":0.48,"direction":"INCREASES_ESTIMATE","feature":"Residual FX depreciation"},{"available":true,"contribution":0.36,"direction":"INCREASES_ESTIMATE","feature":"Reserve adequacy deterioration"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"FX","historical_percentile":0.876,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0108,"7d":0.002,"90d":0.0252},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.1224,"regime":"MANAGED_FLOAT","relative_risk":3.6,"training_end_date":null,"uncertainty_high":0.164,"uncertainty_low":0.0881},{"analysis_date":"2024-01-31","base_rate":0.067,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.18,"direction":"DECREASES_ESTIMATE","feature":"Export momentum"}],"contributors":[{"available":true,"contribution":0.72,"direction":"INCREASES_ESTIMATE","feature":"Exchange-market pressure"},{"available":true,"contribution":0.48,"direction":"INCREASES_ESTIMATE","feature":"Residual FX depreciation"},{"available":true,"contribution":0.36,"direction":"INCREASES_ESTIMATE","feature":"Reserve adequacy deterioration"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"FX","historical_percentile":0.876,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0108,"7d":0.003,"90d":0.0252},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.2412,"regime":"MANAGED_FLOAT","relative_risk":3.6,"training_end_date":null,"uncertainty_high":0.3232,"uncertainty_low":0.1737},{"analysis_date":"2024-01-31","base_rate":0.118,"calibrated_probability":null,"calibration_version":"none","confidence":0.685,"contrary_evidence":[{"available":true,"contribution":-0.18,"direction":"DECREASES_ESTIMATE","feature":"Export momentum"}],"contributors":[{"available":true,"contribution":0.72,"direction":"INCREASES_ESTIMATE","feature":"Exchange-market pressure"},{"available":true,"contribution":0.48,"direction":"INCREASES_ESTIMATE","feature":"Residual FX depreciation"},{"available":true,"contribution":0.36,"direction":"INCREASES_ESTIMATE","feature":"Reserve adequacy deterioration"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"FX","historical_percentile":0.876,"horizon":"24m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0108,"7d":0.004,"90d":0.0252},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.4248,"regime":"MANAGED_FLOAT","relative_risk":3.6,"training_end_date":null,"uncertainty_high":0.5692,"uncertainty_low":0.3059},{"analysis_date":"2024-01-31","base_rate":0.031,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.12,"direction":"DECREASES_ESTIMATE","feature":"Yield-curve signal"}],"contributors":[{"available":true,"contribution":0.41,"direction":"INCREASES_ESTIMATE","feature":"Real credit growth"},{"available":true,"contribution":0.27,"direction":"INCREASES_ESTIMATE","feature":"Bank funding pressure"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"BANK","historical_percentile":0.7,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.006,"7d":0.001,"90d":0.014},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.062,"regime":"MANAGED_FLOAT","relative_risk":2.0,"training_end_date":null,"uncertainty_high":0.0831,"uncertainty_low":0.0446},{"analysis_date":"2024-01-31","base_rate":0.059,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.12,"direction":"DECREASES_ESTIMATE","feature":"Yield-curve signal"}],"contributors":[{"available":true,"contribution":0.41,"direction":"INCREASES_ESTIMATE","feature":"Real credit growth"},{"available":true,"contribution":0.27,"direction":"INCREASES_ESTIMATE","feature":"Bank funding pressure"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"BANK","historical_percentile":0.7,"horizon":"24m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.006,"7d":0.002,"90d":0.014},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.118,"regime":"MANAGED_FLOAT","relative_risk":2.0,"training_end_date":null,"uncertainty_high":0.1581,"uncertainty_low":0.085},{"analysis_date":"2024-01-31","base_rate":0.084,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.12,"direction":"DECREASES_ESTIMATE","feature":"Yield-curve signal"}],"contributors":[{"available":true,"contribution":0.41,"direction":"INCREASES_ESTIMATE","feature":"Real credit growth"},{"available":true,"contribution":0.27,"direction":"INCREASES_ESTIMATE","feature":"Bank funding pressure"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"BANK","historical_percentile":0.7,"horizon":"36m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.006,"7d":0.003,"90d":0.014},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.168,"regime":"MANAGED_FLOAT","relative_risk":2.0,"training_end_date":null,"uncertainty_high":0.2251,"uncertainty_low":0.121},{"analysis_date":"2024-01-31","base_rate":0.012,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.15,"direction":"DECREASES_ESTIMATE","feature":"Primary-balance direction"}],"contributors":[{"available":true,"contribution":0.44,"direction":"INCREASES_ESTIMATE","feature":"Foreign-currency debt burden"},{"available":true,"contribution":0.35,"direction":"INCREASES_ESTIMATE","feature":"Sovereign spread"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"SOV","historical_percentile":0.755,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0075,"7d":0.001,"90d":0.0175},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.03,"regime":"MANAGED_FLOAT","relative_risk":2.5,"training_end_date":null,"uncertainty_high":0.0402,"uncertainty_low":0.0216},{"analysis_date":"2024-01-31","base_rate":0.026,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.15,"direction":"DECREASES_ESTIMATE","feature":"Primary-balance direction"}],"contributors":[{"available":true,"contribution":0.44,"direction":"INCREASES_ESTIMATE","feature":"Foreign-currency debt burden"},{"available":true,"contribution":0.35,"direction":"INCREASES_ESTIMATE","feature":"Sovereign spread"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"SOV","historical_percentile":0.755,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0075,"7d":0.002,"90d":0.0175},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.065,"regime":"MANAGED_FLOAT","relative_risk":2.5,"training_end_date":null,"uncertainty_high":0.0871,"uncertainty_low":0.0468},{"analysis_date":"2024-01-31","base_rate":0.049,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.15,"direction":"DECREASES_ESTIMATE","feature":"Primary-balance direction"}],"contributors":[{"available":true,"contribution":0.44,"direction":"INCREASES_ESTIMATE","feature":"Foreign-currency debt burden"},{"available":true,"contribution":0.35,"direction":"INCREASES_ESTIMATE","feature":"Sovereign spread"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"SOV","historical_percentile":0.755,"horizon":"24m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0075,"7d":0.003,"90d":0.0175},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.1225,"regime":"MANAGED_FLOAT","relative_risk":2.5,"training_end_date":null,"uncertainty_high":0.1642,"uncertainty_low":0.0882},{"analysis_date":"2024-01-31","base_rate":0.021,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.11,"direction":"DECREASES_ESTIMATE","feature":"Real policy rate"}],"contributors":[{"available":true,"contribution":0.61,"direction":"INCREASES_ESTIMATE","feature":"Inflation acceleration"},{"available":true,"contribution":0.29,"direction":"INCREASES_ESTIMATE","feature":"Broad-money growth"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"MON","historical_percentile":0.821,"horizon":"90d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0093,"7d":0.001,"90d":0.0217},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0651,"regime":"MANAGED_FLOAT","relative_risk":3.1,"training_end_date":null,"uncertainty_high":0.0872,"uncertainty_low":0.0469},{"analysis_date":"2024-01-31","base_rate":0.038,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.11,"direction":"DECREASES_ESTIMATE","feature":"Real policy rate"}],"contributors":[{"available":true,"contribution":0.61,"direction":"INCREASES_ESTIMATE","feature":"Inflation acceleration"},{"available":true,"contribution":0.29,"direction":"INCREASES_ESTIMATE","feature":"Broad-money growth"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"MON","historical_percentile":0.821,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0093,"7d":0.002,"90d":0.0217},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.1178,"regime":"MANAGED_FLOAT","relative_risk":3.1,"training_end_date":null,"uncertainty_high":0.1579,"uncertainty_low":0.0848},{"analysis_date":"2024-01-31","base_rate":0.071,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.11,"direction":"DECREASES_ESTIMATE","feature":"Real policy rate"}],"contributors":[{"available":true,"contribution":0.61,"direction":"INCREASES_ESTIMATE","feature":"Inflation acceleration"},{"available":true,"contribution":0.29,"direction":"INCREASES_ESTIMATE","feature":"Broad-money growth"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"MON","historical_percentile":0.821,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0093,"7d":0.003,"90d":0.0217},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.2201,"regime":"MANAGED_FLOAT","relative_risk":3.1,"training_end_date":null,"uncertainty_high":0.2949,"uncertainty_low":0.1585},{"analysis_date":"2024-01-31","base_rate":0.015,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.2,"direction":"DECREASES_ESTIMATE","feature":"Institutional continuity"}],"contributors":[{"available":true,"contribution":0.21,"direction":"INCREASES_ESTIMATE","feature":"Government-stability indicator"},{"available":true,"contribution":0.14,"direction":"INCREASES_ESTIMATE","feature":"Regional stress"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"POL","historical_percentile":0.645,"horizon":"90d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0045,"7d":0.001,"90d":0.0105},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0225,"regime":"MANAGED_FLOAT","relative_risk":1.5,"training_end_date":null,"uncertainty_high":0.0301,"uncertainty_low":0.0162},{"analysis_date":"2024-01-31","base_rate":0.028,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.2,"direction":"DECREASES_ESTIMATE","feature":"Institutional continuity"}],"contributors":[{"available":true,"contribution":0.21,"direction":"INCREASES_ESTIMATE","feature":"Government-stability indicator"},{"available":true,"contribution":0.14,"direction":"INCREASES_ESTIMATE","feature":"Regional stress"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"POL","historical_percentile":0.645,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0045,"7d":0.002,"90d":0.0105},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.042,"regime":"MANAGED_FLOAT","relative_risk":1.5,"training_end_date":null,"uncertainty_high":0.0563,"uncertainty_low":0.0302},{"analysis_date":"2024-01-31","base_rate":0.052,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.2,"direction":"DECREASES_ESTIMATE","feature":"Institutional continuity"}],"contributors":[{"available":true,"contribution":0.21,"direction":"INCREASES_ESTIMATE","feature":"Government-stability indicator"},{"available":true,"contribution":0.14,"direction":"INCREASES_ESTIMATE","feature":"Regional stress"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"POL","historical_percentile":0.645,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0045,"7d":0.003,"90d":0.0105},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.078,"regime":"MANAGED_FLOAT","relative_risk":1.5,"training_end_date":null,"uncertainty_high":0.1045,"uncertainty_low":0.0562},{"analysis_date":"2024-01-31","base_rate":0.002,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.23,"direction":"DECREASES_ESTIMATE","feature":"Institutional continuity"}],"contributors":[{"available":true,"contribution":0.08,"direction":"INCREASES_ESTIMATE","feature":"Recent unconstitutional-change history"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"COUP","historical_percentile":0.574,"horizon":"90d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.001,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0017,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0023,"uncertainty_low":0.0012},{"analysis_date":"2024-01-31","base_rate":0.004,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.23,"direction":"DECREASES_ESTIMATE","feature":"Institutional continuity"}],"contributors":[{"available":true,"contribution":0.08,"direction":"INCREASES_ESTIMATE","feature":"Recent unconstitutional-change history"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"COUP","historical_percentile":0.574,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.002,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0034,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0046,"uncertainty_low":0.0024},{"analysis_date":"2024-01-31","base_rate":0.008,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.23,"direction":"DECREASES_ESTIMATE","feature":"Institutional continuity"}],"contributors":[{"available":true,"contribution":0.08,"direction":"INCREASES_ESTIMATE","feature":"Recent unconstitutional-change history"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"COUP","historical_percentile":0.574,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.003,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0068,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0091,"uncertainty_low":0.0049},{"analysis_date":"2024-01-31","base_rate":0.004,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.16,"direction":"DECREASES_ESTIMATE","feature":"Recent domestic conflict"}],"contributors":[{"available":true,"contribution":0.12,"direction":"INCREASES_ESTIMATE","feature":"Neighbor conflict exposure"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"CIV","historical_percentile":0.574,"horizon":"90d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.001,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0034,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0046,"uncertainty_low":0.0024},{"analysis_date":"2024-01-31","base_rate":0.008,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.16,"direction":"DECREASES_ESTIMATE","feature":"Recent domestic conflict"}],"contributors":[{"available":true,"contribution":0.12,"direction":"INCREASES_ESTIMATE","feature":"Neighbor conflict exposure"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"CIV","historical_percentile":0.574,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.002,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0068,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0091,"uncertainty_low":0.0049},{"analysis_date":"2024-01-31","base_rate":0.016,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.16,"direction":"DECREASES_ESTIMATE","feature":"Recent domestic conflict"}],"contributors":[{"available":true,"contribution":0.12,"direction":"INCREASES_ESTIMATE","feature":"Neighbor conflict exposure"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"CIV","historical_percentile":0.574,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.003,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0136,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0182,"uncertainty_low":0.0098},{"analysis_date":"2024-01-31","base_rate":0.001,"calibrated_probability":null,"calibration_version":"none","confidence":0.746,"contrary_evidence":[{"available":true,"contribution":-0.25,"direction":"DECREASES_ESTIMATE","feature":"Peaceful dyad history"}],"contributors":[{"available":true,"contribution":0.1,"direction":"INCREASES_ESTIMATE","feature":"Regional interstate tension"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"WAR","historical_percentile":0.574,"horizon":"90d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.001,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0008,"regime":"MANAGED_FLOAT","relative_risk":0.8,"training_end_date":null,"uncertainty_high":0.0011,"uncertainty_low":0.0006},{"analysis_date":"2024-01-31","base_rate":0.002,"calibrated_probability":null,"calibration_version":"none","confidence":0.726,"contrary_evidence":[{"available":true,"contribution":-0.25,"direction":"DECREASES_ESTIMATE","feature":"Peaceful dyad history"}],"contributors":[{"available":true,"contribution":0.1,"direction":"INCREASES_ESTIMATE","feature":"Regional interstate tension"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"WAR","historical_percentile":0.574,"horizon":"180d","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.002,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0017,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0023,"uncertainty_low":0.0012},{"analysis_date":"2024-01-31","base_rate":0.004,"calibrated_probability":null,"calibration_version":"none","confidence":0.705,"contrary_evidence":[{"available":true,"contribution":-0.25,"direction":"DECREASES_ESTIMATE","feature":"Peaceful dyad history"}],"contributors":[{"available":true,"contribution":0.1,"direction":"INCREASES_ESTIMATE","feature":"Regional interstate tension"}],"country":"Türkiye","country_id":"TR","coverage":0.82,"display_label":"UNCALIBRATED_RISK_ESTIMATE","hazard":"WAR","historical_percentile":0.574,"horizon":"12m","model_tier":"MACRO_FINANCIAL","model_version":"0.1.0-demo","momentum":{"30d":0.0026,"7d":0.003,"90d":0.0059},"ood_status":"NOT_ASSESSED","probability_status":"UNCALIBRATED","raw_probability":0.0034,"regime":"MANAGED_FLOAT","relative_risk":0.85,"training_end_date":null,"uncertainty_high":0.0046,"uncertainty_low":0.0024}],"fx_stress":{"country":"Türkiye","decomposition":[{"label":"Raw FX","value":0.62},{"label":"Reserve defense","value":0.38},{"label":"Rate defense","value":0.17},{"label":"Global factor","value":-0.24},{"label":"Residual/local","value":0.53}],"measures":[{"name":"Spot depreciation (30d)","status":"AVAILABLE","unit":"%","value":0.061},{"name":"Residual FX surprise","status":"AVAILABLE","unit":"z","value":1.84},{"name":"Exchange-market pressure","status":"AVAILABLE","unit":"z","value":2.16},{"name":"Reserve pressure","status":"AVAILABLE","unit":"z","value":-0.74},{"name":"Parallel-market premium","status":"NOT_APPLICABLE","unit":"%","value":null},{"name":"Option risk reversal","status":"MISSING","unit":"vol pts","value":null}],"percentile":0.91,"regime":"MANAGED_FLOAT","status":"SYNTHETIC_FIXTURE"},"hazards":[{"definition_version":"0.1.0","hazard_type":"FX","label":"Currency / balance-of-payments crisis","supported_horizons":["90d","180d","12m","24m"]},{"definition_version":"0.1.0","hazard_type":"BANK","label":"Systemic banking crisis","supported_horizons":["12m","24m","36m"]},{"definition_version":"0.1.0","hazard_type":"SOV","label":"Sovereign distress / default","supported_horizons":["180d","12m","24m"]},{"definition_version":"0.1.0","hazard_type":"MON","label":"Monetary / inflation crisis","supported_horizons":["90d","180d","12m"]},{"definition_version":"0.1.0","hazard_type":"POL","label":"Major political-instability crisis","supported_horizons":["90d","180d","12m"]},{"definition_version":"0.1.0","hazard_type":"COUP","label":"Coup / unconstitutional change","supported_horizons":["90d","180d","12m"]},{"definition_version":"0.1.0","hazard_type":"CIV","label":"Internal armed-conflict onset","supported_horizons":["90d","180d","12m"]},{"definition_version":"0.1.0","hazard_type":"WAR","label":"Interstate armed-conflict onset","supported_horizons":["90d","180d","12m"]}],"historical_analogues":[{"country":"Synthetic analogue A","coverage":0.78,"date":"2008-09-30","event_type":null,"outcome":"No qualifying onset within 12 months","regime":"MANAGED_FLOAT","similarity":0.84,"time_to_event_days":null},{"country":"Synthetic analogue B","coverage":0.81,"date":"2013-06-30","event_type":"FX","outcome":"Synthetic FX onset after 214 days","regime":"MANAGED_FLOAT","similarity":0.79,"time_to_event_days":214},{"country":"Synthetic analogue C","coverage":0.69,"date":"2018-08-31","event_type":"MON","outcome":"Synthetic monetary onset after 301 days","regime":"CRAWLING_PEG","similarity":0.74,"time_to_event_days":301}],"historical_timeline":[{"date":"2023-02-28","estimate":0.12,"hazard":"FX","vintage_status":"RECONSTRUCTED"},{"date":"2023-05-31","estimate":0.15,"hazard":"FX","vintage_status":"RECONSTRUCTED"},{"date":"2023-08-31","estimate":0.18,"hazard":"FX","vintage_status":"RECONSTRUCTED"},{"date":"2023-11-30","estimate":0.21,"hazard":"FX","vintage_status":"RECONSTRUCTED"},{"date":"2024-01-31","estimate":0.241,"hazard":"FX","vintage_status":"RECONSTRUCTED"},{"date":"2018-08-13","estimate":null,"event_onset":true,"hazard":"FX","vintage_status":"SYNTHETIC_EVENT_FIXTURE"}],"limitations":["Every numerical value and historical event in this example is synthetic.","No empirical event labels, training, final test, calibration, or alert-threshold validation were used.","Reconstructed point-in-time status is not a genuine real-time backtest.","Parallel-rate and option evidence are unavailable or not applicable in the fixture.","Hazards are dependent; no overall any-crisis probability is calculated.","Predictive contributors are associations and are not causal findings."],"macro_vulnerability":{"dimensions":[{"direction":"DETERIORATING","name":"External balance","score":0.68},{"direction":"DETERIORATING","name":"Reserve adequacy","score":0.73},{"direction":"STABLE","name":"Credit cycle","score":0.49},{"direction":"DETERIORATING","name":"Sovereign balance sheet","score":0.58},{"direction":"DETERIORATING","name":"Inflation pressure","score":0.77},{"direction":"STABLE","name":"Political structure","score":0.41}],"status":"SYNTHETIC_FIXTURE"},"methodology_version":"0.1.0","model_version":"0.1.0-demo","provenance":[{"country_id":"TR","currency_id":"TRY","feature_id":"demo.emp","frequency":"MONTHLY","license":"CC0-1.0 synthetic fixture","period_end":"2024-01-31","period_start":"2024-01-01","provenance_type":"SYNTHETIC","provider":"FX-CPM","release_date":"2024-01-31","retrieval_date":"2024-01-31","revision_status":"FIXED","source_authority":0.0,"source_name":"FX-CPM synthetic fixture","source_quality":1.0,"source_type":"SYNTHETIC","source_url":"https://example.invalid/fx-cpm/synthetic-fixture","status":"AVAILABLE","transformation_lineage":["synthetic_spot","synthetic_reserves","emp_formula_v0.1.0"],"unit":"z","value":2.16,"vintage":"synthetic-v1"},{"country_id":"TR","currency_id":"TRY","feature_id":"demo.option_risk_reversal","frequency":"DAILY","license":"CC0-1.0 synthetic fixture","period_end":"2024-01-31","period_start":"2024-01-31","provenance_type":"SYNTHETIC","provider":"FX-CPM","release_date":"2024-01-31","retrieval_date":"2024-01-31","revision_status":"FIXED","source_authority":0.0,"source_name":"FX-CPM synthetic fixture","source_quality":1.0,"source_type":"SYNTHETIC","source_url":"https://example.invalid/fx-cpm/synthetic-fixture","status":"MISSING","transformation_lineage":[],"unit":"volatility points","value":null,"vintage":"synthetic-v1"}],"schema_version":"1.0.0","source_health":{"failed":0,"healthy":5,"items":[{"source":"Synthetic macro fixture","status":"AVAILABLE"},{"source":"Synthetic market fixture","status":"STALE"}],"stale":1,"status":"DEMONSTRATION_ONLY"},"validation":{"chronological_split":false,"event_count":0,"final_test_untouched":true,"fx_ablation":{"delta_average_precision":null,"delta_brier":null,"delta_log_loss":null},"message":"Synthetic fixture: no empirical backtest has been run.","metrics":{"average_precision":null,"brier_score":null,"log_loss":null},"status":"NOT_RUN","test_window":null}}</script>
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+
+  var printButton = document.getElementById("print-report");
+  if (printButton) {
+    printButton.addEventListener("click", function () { window.print(); });
+  }
+
+  document.querySelectorAll("table[data-sortable]").forEach(function (table) {
+    table.querySelectorAll("thead th").forEach(function (heading, columnIndex) {
+      if (heading.hasAttribute("data-no-sort")) { return; }
+      var label = heading.textContent || "Column";
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "sort-button screen-only";
+      button.textContent = label;
+      button.setAttribute("aria-label", "Sort by " + label);
+      heading.textContent = "";
+      heading.appendChild(button);
+      button.addEventListener("click", function () {
+        var body = table.tBodies[0];
+        if (!body) { return; }
+        var ascending = button.getAttribute("aria-sort") !== "ascending";
+        table.querySelectorAll(".sort-button").forEach(function (other) {
+          other.removeAttribute("aria-sort");
+        });
+        button.setAttribute("aria-sort", ascending ? "ascending" : "descending");
+        var rows = Array.prototype.slice.call(body.rows);
+        rows.sort(function (a, b) {
+          var aText = (a.cells[columnIndex] || {}).textContent || "";
+          var bText = (b.cells[columnIndex] || {}).textContent || "";
+          var aNumber = Number(aText.replace(/[^0-9.+-]/g, ""));
+          var bNumber = Number(bText.replace(/[^0-9.+-]/g, ""));
+          var comparison = Number.isFinite(aNumber) && Number.isFinite(bNumber)
+            ? aNumber - bNumber
+            : aText.localeCompare(bText, undefined, {numeric: true});
+          return ascending ? comparison : -comparison;
+        });
+        rows.forEach(function (row) { body.appendChild(row); });
+      });
+    });
+  });
+}());
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "status": "SYNTHETIC_FIXTURE",
+  "country": "Türkiye",
+  "regime": "MANAGED_FLOAT",
+  "percentile": 0.88,
+  "measures": [
+    {
+      "name": "Residual FX surprise",
+      "status": "AVAILABLE",
+      "unit": "z",
+      "value": 1.62
+    },
+    {
+      "name": "Option risk reversal",
+      "status": "MISSING",
+      "unit": "volatility points",
+      "value": null
+    }
+  ]
+}
+

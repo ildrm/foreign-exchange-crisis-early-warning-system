@@ -1,0 +1,1 @@
+"""Macroeconomic source adapters."""

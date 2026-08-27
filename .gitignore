@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.venv/
+venv/
+.env
+.DS_Store
+
+# Generated reports are reproducible from examples; keep only checked-in examples.
+output/html/*.html
+output/json/*.json
+output/pdf/*.pdf
+!output/**/.gitkeep
+

@@ -1,0 +1,1 @@
+"""Sovereign-risk source adapters."""

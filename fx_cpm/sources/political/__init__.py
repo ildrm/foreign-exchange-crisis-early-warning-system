@@ -1,0 +1,1 @@
+"""Political-risk source adapters."""

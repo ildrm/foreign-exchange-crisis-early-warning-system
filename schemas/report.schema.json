@@ -1,0 +1,368 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fx-cpm.org/schemas/report-1.0.0.schema.json",
+  "title": "FX-CPM canonical research report",
+  "description": "Machine-readable output contract. A numerical forecast is a probability only when probability_status is CALIBRATED_VALIDATED.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_version",
+    "methodology_version",
+    "calibration_version",
+    "alert_policy_version",
+    "analysis",
+    "countries",
+    "hazards",
+    "forecasts",
+    "alerts",
+    "fx_stress",
+    "macro_vulnerability",
+    "contagion",
+    "historical_analogues",
+    "validation",
+    "calibration",
+    "data_quality",
+    "source_health",
+    "limitations",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "model_version": {"type": "string", "minLength": 1},
+    "methodology_version": {"type": "string", "minLength": 1},
+    "calibration_version": {"type": "string", "minLength": 1},
+    "alert_policy_version": {"type": "string", "minLength": 1},
+    "analysis": {"$ref": "#/$defs/analysis"},
+    "countries": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/country"}
+    },
+    "hazards": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/hazard"},
+      "minItems": 1
+    },
+    "forecasts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/forecast"}
+    },
+    "alerts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/alert"}
+    },
+    "fx_stress": {"$ref": "#/$defs/section"},
+    "macro_vulnerability": {"$ref": "#/$defs/section"},
+    "contagion": {"$ref": "#/$defs/section"},
+    "historical_analogues": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/analogue"}
+    },
+    "historical_timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["date", "hazard", "estimate", "vintage_status"],
+        "properties": {
+          "date": {"$ref": "#/$defs/date"},
+          "hazard": {"$ref": "#/$defs/hazardType"},
+          "estimate": {"$ref": "#/$defs/probability"},
+          "vintage_status": {"type": "string"},
+          "event_onset": {"type": "boolean"}
+        }
+      }
+    },
+    "validation": {"$ref": "#/$defs/validation"},
+    "calibration": {"$ref": "#/$defs/calibration"},
+    "data_quality": {"$ref": "#/$defs/dataQuality"},
+    "source_health": {"$ref": "#/$defs/section"},
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1
+    },
+    "provenance": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/provenance"}
+    }
+  },
+  "$defs": {
+    "date": {"type": "string", "format": "date"},
+    "dateTime": {"type": "string", "format": "date-time"},
+    "nullableDate": {"oneOf": [{"$ref": "#/$defs/date"}, {"type": "null"}]},
+    "nullableNumber": {"type": ["number", "null"]},
+    "probability": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "ratio": {"type": ["number", "null"], "minimum": 0},
+    "section": {
+      "type": "object",
+      "description": "Versioned analytical section; unknown fields are retained for forward-compatible research payloads.",
+      "additionalProperties": true
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["analysis_date", "generated_at", "report_mode", "point_in_time_status"],
+      "properties": {
+        "analysis_date": {"$ref": "#/$defs/date"},
+        "generated_at": {"$ref": "#/$defs/dateTime"},
+        "report_mode": {
+          "enum": ["RESEARCH_UNCALIBRATED", "RESEARCH_CALIBRATED", "VALIDATED_OPERATIONAL"]
+        },
+        "point_in_time_status": {
+          "enum": ["TRUE_VINTAGE", "RECONSTRUCTED_POINT_IN_TIME", "REVISED_HISTORY_ONLY", "MIXED"]
+        },
+        "history_start": {"$ref": "#/$defs/nullableDate"},
+        "web_accessed": {"type": "boolean"},
+        "seed_used": {"type": "boolean"}
+      }
+    },
+    "country": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["country_id", "name"],
+      "properties": {
+        "country_id": {"type": "string", "minLength": 2},
+        "name": {"type": "string", "minLength": 1},
+        "currency_id": {"type": ["string", "null"]},
+        "regime": {"type": ["string", "null"]},
+        "anchor_currency_id": {"type": ["string", "null"]},
+        "capital_controls": {"type": ["boolean", "null"]},
+        "multiple_rates": {"type": ["boolean", "null"]}
+      }
+    },
+    "hazard": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["hazard_type", "label", "definition_version", "supported_horizons"],
+      "properties": {
+        "hazard_type": {"$ref": "#/$defs/hazardType"},
+        "label": {"type": "string", "minLength": 1},
+        "definition_version": {"type": "string", "minLength": 1},
+        "supported_horizons": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/horizon"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "hazardType": {
+      "enum": ["FX", "BANK", "SOV", "MON", "POL", "COUP", "CIV", "WAR"]
+    },
+    "horizon": {
+      "enum": ["30d", "90d", "180d", "12m", "24m", "36m"]
+    },
+    "forecast": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "country",
+        "hazard",
+        "analysis_date",
+        "horizon",
+        "raw_probability",
+        "calibrated_probability",
+        "probability_status",
+        "base_rate",
+        "relative_risk",
+        "historical_percentile",
+        "confidence",
+        "coverage",
+        "model_version",
+        "calibration_version",
+        "regime",
+        "training_end_date",
+        "model_tier",
+        "ood_status"
+      ],
+      "properties": {
+        "country": {"type": "string", "minLength": 1},
+        "country_id": {"type": "string"},
+        "hazard": {"$ref": "#/$defs/hazardType"},
+        "analysis_date": {"$ref": "#/$defs/date"},
+        "horizon": {"$ref": "#/$defs/horizon"},
+        "raw_probability": {"$ref": "#/$defs/probability"},
+        "calibrated_probability": {"$ref": "#/$defs/probability"},
+        "probability_status": {
+          "enum": ["CALIBRATED_VALIDATED", "CALIBRATED_WEAK", "UNCALIBRATED", "INSUFFICIENT_EVIDENCE"]
+        },
+        "display_label": {"enum": ["PROBABILITY", "UNCALIBRATED_RISK_ESTIMATE", "RISK_INDEX", "INSUFFICIENT_EVIDENCE"]},
+        "base_rate": {"$ref": "#/$defs/probability"},
+        "relative_risk": {"$ref": "#/$defs/ratio"},
+        "historical_percentile": {"$ref": "#/$defs/probability"},
+        "confidence": {"$ref": "#/$defs/probability"},
+        "coverage": {"$ref": "#/$defs/probability"},
+        "uncertainty_low": {"$ref": "#/$defs/probability"},
+        "uncertainty_high": {"$ref": "#/$defs/probability"},
+        "model_version": {"type": "string"},
+        "calibration_version": {"type": "string"},
+        "regime": {"type": "string"},
+        "training_end_date": {"$ref": "#/$defs/nullableDate"},
+        "model_tier": {"enum": ["HISTORICAL_STRUCTURAL", "MACRO_FINANCIAL", "MODERN_MARKET_ENHANCED"]},
+        "ood_status": {"enum": ["IN_DOMAIN", "NEAR_BOUNDARY", "MODEL_OUT_OF_DOMAIN", "NOT_ASSESSED"]},
+        "momentum": {"type": "object", "additionalProperties": {"type": ["number", "null"]}},
+        "contributors": {"type": "array", "items": {"$ref": "#/$defs/contributor"}},
+        "contrary_evidence": {"type": "array", "items": {"$ref": "#/$defs/contributor"}}
+      }
+    },
+    "contributor": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["feature", "contribution"],
+      "properties": {
+        "feature": {"type": "string"},
+        "contribution": {"type": "number"},
+        "direction": {"enum": ["INCREASES_ESTIMATE", "DECREASES_ESTIMATE"]},
+        "available": {"type": "boolean"}
+      }
+    },
+    "alert": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["country", "hazard", "horizon", "severity", "evidence_alerts", "calibration_status", "ood_status"],
+      "properties": {
+        "country": {"type": "string"},
+        "hazard": {"$ref": "#/$defs/hazardType"},
+        "horizon": {"$ref": "#/$defs/horizon"},
+        "severity": {
+          "enum": ["NO_ALERT", "WATCH", "ELEVATED", "HIGH", "CRITICAL", "WATCH_UNCALIBRATED"]
+        },
+        "evidence_alerts": {
+          "type": "array",
+          "items": {
+            "enum": ["INSUFFICIENT_EVIDENCE", "LOW_DATA_QUALITY", "STALE_DATA", "SOURCE_DISAGREEMENT", "MODEL_OUT_OF_DOMAIN", "CALIBRATION_WEAK", "MODEL_DRIFT", "REGIME_CHANGE", "DATA_PIPELINE_FAILURE"]
+          },
+          "uniqueItems": true
+        },
+        "calibrated_probability": {"$ref": "#/$defs/probability"},
+        "base_rate": {"$ref": "#/$defs/probability"},
+        "relative_risk": {"$ref": "#/$defs/ratio"},
+        "historical_percentile": {"$ref": "#/$defs/probability"},
+        "probability_change": {"$ref": "#/$defs/nullableNumber"},
+        "evidence_confidence": {"$ref": "#/$defs/probability"},
+        "data_coverage": {"$ref": "#/$defs/probability"},
+        "calibration_status": {"type": "string"},
+        "ood_status": {"type": "string"},
+        "fx_regime": {"type": ["string", "null"]},
+        "trigger_threshold": {"$ref": "#/$defs/probability"},
+        "threshold_methodology": {"type": ["string", "null"]},
+        "first_seen": {"$ref": "#/$defs/nullableDate"},
+        "last_changed": {"$ref": "#/$defs/nullableDate"}
+      }
+    },
+    "analogue": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["country", "date", "similarity", "outcome"],
+      "properties": {
+        "country": {"type": "string"},
+        "date": {"$ref": "#/$defs/date"},
+        "similarity": {"$ref": "#/$defs/probability"},
+        "outcome": {"type": "string"},
+        "event_type": {"oneOf": [{"$ref": "#/$defs/hazardType"}, {"type": "null"}]},
+        "time_to_event_days": {"type": ["integer", "null"], "minimum": 0},
+        "regime": {"type": ["string", "null"]}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["status", "chronological_split", "final_test_untouched"],
+      "properties": {
+        "status": {"enum": ["NOT_RUN", "INSUFFICIENT_EVENTS", "RESEARCH_ONLY", "VALIDATED"]},
+        "chronological_split": {"type": "boolean"},
+        "final_test_untouched": {"type": "boolean"},
+        "alert_thresholds_backtested": {"type": "boolean"},
+        "metrics": {"type": "object", "additionalProperties": {"$ref": "#/$defs/nullableNumber"}},
+        "fx_ablation": {"type": "object", "additionalProperties": {"$ref": "#/$defs/nullableNumber"}},
+        "test_window": {"type": ["string", "null"]},
+        "event_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["status", "method", "calibration_period", "event_count"],
+      "properties": {
+        "status": {"enum": ["NOT_FITTED", "WEAK", "ACCEPTABLE", "OUT_OF_DOMAIN"]},
+        "method": {"type": ["string", "null"]},
+        "calibration_period": {"type": ["string", "null"]},
+        "event_count": {"type": "integer", "minimum": 0},
+        "brier_score": {"$ref": "#/$defs/nullableNumber"},
+        "log_loss": {"$ref": "#/$defs/nullableNumber"},
+        "slope": {"$ref": "#/$defs/nullableNumber"},
+        "intercept": {"$ref": "#/$defs/nullableNumber"},
+        "bins": {"type": "array", "items": {"type": "object", "additionalProperties": true}}
+      }
+    },
+    "dataQuality": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["coverage", "freshness", "source_authority", "vintage_quality"],
+      "properties": {
+        "coverage": {"$ref": "#/$defs/probability"},
+        "freshness": {"$ref": "#/$defs/probability"},
+        "source_authority": {"$ref": "#/$defs/probability"},
+        "source_disagreement": {"$ref": "#/$defs/probability"},
+        "historical_depth": {"$ref": "#/$defs/probability"},
+        "vintage_quality": {"$ref": "#/$defs/probability"},
+        "overall": {"$ref": "#/$defs/probability"},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "feature_id",
+        "country_id",
+        "currency_id",
+        "value",
+        "unit",
+        "frequency",
+        "period_start",
+        "period_end",
+        "release_date",
+        "retrieval_date",
+        "vintage",
+        "source_name",
+        "source_url",
+        "source_type",
+        "provider",
+        "source_authority",
+        "source_quality",
+        "license",
+        "revision_status",
+        "provenance_type",
+        "transformation_lineage",
+        "status"
+      ],
+      "properties": {
+        "feature_id": {"type": "string"},
+        "country_id": {"type": ["string", "null"]},
+        "currency_id": {"type": ["string", "null"]},
+        "value": {"type": ["number", "string", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "frequency": {"type": ["string", "null"]},
+        "period_start": {"$ref": "#/$defs/nullableDate"},
+        "period_end": {"$ref": "#/$defs/nullableDate"},
+        "release_date": {"$ref": "#/$defs/nullableDate"},
+        "retrieval_date": {"$ref": "#/$defs/date"},
+        "vintage": {"type": ["string", "null"]},
+        "source_name": {"type": "string"},
+        "source_url": {"type": ["string", "null"], "format": "uri"},
+        "source_type": {"type": ["string", "null"]},
+        "provider": {"type": ["string", "null"]},
+        "source_authority": {"$ref": "#/$defs/probability"},
+        "source_quality": {"$ref": "#/$defs/probability"},
+        "license": {"type": ["string", "null"]},
+        "revision_status": {"type": ["string", "null"]},
+        "provenance_type": {"type": ["string", "null"]},
+        "transformation_lineage": {"type": "array", "items": {"type": "string"}},
+        "status": {
+          "enum": ["AVAILABLE", "STALE", "MISSING", "NOT_APPLICABLE", "UNRELIABLE", "SOURCE_FAILURE", "INSUFFICIENT_HISTORY"]
+        }
+      }
+    }
+  }
+}

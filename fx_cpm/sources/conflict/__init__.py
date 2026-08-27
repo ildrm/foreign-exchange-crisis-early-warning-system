@@ -1,0 +1,1 @@
+"""Conflict-event source adapters."""

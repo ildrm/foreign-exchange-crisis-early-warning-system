@@ -1,0 +1,1890 @@
+{
+  "alert_policy_version": "0.1.0",
+  "alerts": [
+    {
+      "base_rate": 0.067,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "FX",
+      "historical_percentile": 0.876,
+      "horizon": "12m",
+      "key_reason": "Exchange-market pressure",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0108,
+      "raw_estimate": 0.2412,
+      "relative_risk": 3.6,
+      "severity": "WATCH_UNCALIBRATED",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.084,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "BANK",
+      "historical_percentile": 0.7,
+      "horizon": "36m",
+      "key_reason": "Real credit growth",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.006,
+      "raw_estimate": 0.168,
+      "relative_risk": 2.0,
+      "severity": "WATCH_UNCALIBRATED",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.049,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "SOV",
+      "historical_percentile": 0.755,
+      "horizon": "24m",
+      "key_reason": "Foreign-currency debt burden",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0075,
+      "raw_estimate": 0.1225,
+      "relative_risk": 2.5,
+      "severity": "WATCH_UNCALIBRATED",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.071,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "MON",
+      "historical_percentile": 0.821,
+      "horizon": "12m",
+      "key_reason": "Inflation acceleration",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0093,
+      "raw_estimate": 0.2201,
+      "relative_risk": 3.1,
+      "severity": "WATCH_UNCALIBRATED",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.052,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "POL",
+      "historical_percentile": 0.645,
+      "horizon": "12m",
+      "key_reason": "Government-stability indicator",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0045,
+      "raw_estimate": 0.078,
+      "relative_risk": 1.5,
+      "severity": "WATCH_UNCALIBRATED",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.008,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "COUP",
+      "historical_percentile": 0.574,
+      "horizon": "12m",
+      "key_reason": "Recent unconstitutional-change history",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0026,
+      "raw_estimate": 0.0068,
+      "relative_risk": 0.85,
+      "severity": "NO_ALERT",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.016,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "CIV",
+      "historical_percentile": 0.574,
+      "horizon": "12m",
+      "key_reason": "Neighbor conflict exposure",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0026,
+      "raw_estimate": 0.0136,
+      "relative_risk": 0.85,
+      "severity": "NO_ALERT",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    },
+    {
+      "base_rate": 0.004,
+      "calibrated_probability": null,
+      "calibration_status": "NOT_FITTED",
+      "caveat": "Synthetic fixture; no empirical calibration or validated threshold.",
+      "country": "Türkiye",
+      "data_coverage": 0.82,
+      "evidence_alerts": [
+        "CALIBRATION_WEAK"
+      ],
+      "evidence_confidence": 0.705,
+      "first_seen": "2024-01-31",
+      "fx_regime": "MANAGED_FLOAT",
+      "hazard": "WAR",
+      "historical_percentile": 0.574,
+      "horizon": "12m",
+      "key_reason": "Regional interstate tension",
+      "last_changed": "2024-01-31",
+      "ood_status": "NOT_ASSESSED",
+      "probability_change": 0.0026,
+      "raw_estimate": 0.0034,
+      "relative_risk": 0.85,
+      "severity": "NO_ALERT",
+      "threshold_methodology": null,
+      "trigger_threshold": null
+    }
+  ],
+  "analysis": {
+    "analysis_date": "2024-01-31",
+    "countries_label": "Türkiye",
+    "executive_summary": "In this synthetic pipeline demonstration, FX at 24m has the largest uncalibrated risk estimate (42.5%). The historical comparison, changes, and contributors are fabricated fixtures used only to exercise report semantics.",
+    "generated_at": "2024-01-31T12:00:00Z",
+    "history_start": "2000-01-01",
+    "major_limitation": "No empirical training, held-out calibration, or validated alert threshold is attached; no value in this report is a current-country forecast.",
+    "network_policy": "DISABLED_BY_USER",
+    "point_in_time_status": "RECONSTRUCTED_POINT_IN_TIME",
+    "report_mode": "RESEARCH_UNCALIBRATED",
+    "seed_used": true,
+    "web_accessed": false
+  },
+  "calibration": {
+    "bins": [],
+    "brier_score": null,
+    "calibration_period": null,
+    "event_count": 0,
+    "intercept": null,
+    "log_loss": null,
+    "message": "Numerical outputs are uncalibrated research estimates, not probabilities.",
+    "method": null,
+    "slope": null,
+    "status": "NOT_FITTED"
+  },
+  "calibration_version": "none",
+  "contagion": {
+    "common_factor_pressure": 0.37,
+    "interpretation": "Network pressure is an association and is not evidence of direct contagion causation.",
+    "network_pressure": 0.31,
+    "own_country_pressure": 0.69,
+    "peers": [
+      {
+        "channel": "trade",
+        "country": "Synthetic peer A",
+        "risk_index": 0.44
+      },
+      {
+        "channel": "common anchor",
+        "country": "Synthetic peer B",
+        "risk_index": 0.36
+      },
+      {
+        "channel": "banking claims",
+        "country": "Synthetic peer C",
+        "risk_index": 0.28
+      }
+    ],
+    "status": "SYNTHETIC_FIXTURE"
+  },
+  "countries": [
+    {
+      "anchor_currency_id": "USD",
+      "capital_controls": false,
+      "country_id": "TR",
+      "coverage": 0.82,
+      "currency_id": "TRY",
+      "multiple_rates": false,
+      "name": "Türkiye",
+      "regime": "MANAGED_FLOAT"
+    }
+  ],
+  "data_quality": {
+    "coverage": 0.82,
+    "freshness": 0.79,
+    "historical_depth": 0.66,
+    "overall": 0.69,
+    "source_authority": 0.86,
+    "source_disagreement": 0.18,
+    "vintage_quality": 0.45,
+    "warnings": [
+      "Synthetic records do not represent real source coverage.",
+      "Historical values are labelled reconstructed, not true vintage.",
+      "Modern option-market evidence is missing."
+    ]
+  },
+  "forecasts": [
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.018,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.18,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Export momentum"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.72,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Exchange-market pressure"
+        },
+        {
+          "available": true,
+          "contribution": 0.48,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Residual FX depreciation"
+        },
+        {
+          "available": true,
+          "contribution": 0.36,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Reserve adequacy deterioration"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "FX",
+      "historical_percentile": 0.876,
+      "horizon": "90d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0108,
+        "7d": 0.001,
+        "90d": 0.0252
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0648,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.6,
+      "training_end_date": null,
+      "uncertainty_high": 0.0868,
+      "uncertainty_low": 0.0467
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.034,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.18,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Export momentum"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.72,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Exchange-market pressure"
+        },
+        {
+          "available": true,
+          "contribution": 0.48,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Residual FX depreciation"
+        },
+        {
+          "available": true,
+          "contribution": 0.36,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Reserve adequacy deterioration"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "FX",
+      "historical_percentile": 0.876,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0108,
+        "7d": 0.002,
+        "90d": 0.0252
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.1224,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.6,
+      "training_end_date": null,
+      "uncertainty_high": 0.164,
+      "uncertainty_low": 0.0881
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.067,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.18,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Export momentum"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.72,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Exchange-market pressure"
+        },
+        {
+          "available": true,
+          "contribution": 0.48,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Residual FX depreciation"
+        },
+        {
+          "available": true,
+          "contribution": 0.36,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Reserve adequacy deterioration"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "FX",
+      "historical_percentile": 0.876,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0108,
+        "7d": 0.003,
+        "90d": 0.0252
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.2412,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.6,
+      "training_end_date": null,
+      "uncertainty_high": 0.3232,
+      "uncertainty_low": 0.1737
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.118,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.685,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.18,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Export momentum"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.72,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Exchange-market pressure"
+        },
+        {
+          "available": true,
+          "contribution": 0.48,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Residual FX depreciation"
+        },
+        {
+          "available": true,
+          "contribution": 0.36,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Reserve adequacy deterioration"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "FX",
+      "historical_percentile": 0.876,
+      "horizon": "24m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0108,
+        "7d": 0.004,
+        "90d": 0.0252
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.4248,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.6,
+      "training_end_date": null,
+      "uncertainty_high": 0.5692,
+      "uncertainty_low": 0.3059
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.031,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.12,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Yield-curve signal"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.41,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Real credit growth"
+        },
+        {
+          "available": true,
+          "contribution": 0.27,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Bank funding pressure"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "BANK",
+      "historical_percentile": 0.7,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.006,
+        "7d": 0.001,
+        "90d": 0.014
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.062,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 2.0,
+      "training_end_date": null,
+      "uncertainty_high": 0.0831,
+      "uncertainty_low": 0.0446
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.059,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.12,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Yield-curve signal"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.41,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Real credit growth"
+        },
+        {
+          "available": true,
+          "contribution": 0.27,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Bank funding pressure"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "BANK",
+      "historical_percentile": 0.7,
+      "horizon": "24m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.006,
+        "7d": 0.002,
+        "90d": 0.014
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.118,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 2.0,
+      "training_end_date": null,
+      "uncertainty_high": 0.1581,
+      "uncertainty_low": 0.085
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.084,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.12,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Yield-curve signal"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.41,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Real credit growth"
+        },
+        {
+          "available": true,
+          "contribution": 0.27,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Bank funding pressure"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "BANK",
+      "historical_percentile": 0.7,
+      "horizon": "36m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.006,
+        "7d": 0.003,
+        "90d": 0.014
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.168,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 2.0,
+      "training_end_date": null,
+      "uncertainty_high": 0.2251,
+      "uncertainty_low": 0.121
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.012,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.15,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Primary-balance direction"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.44,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Foreign-currency debt burden"
+        },
+        {
+          "available": true,
+          "contribution": 0.35,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Sovereign spread"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "SOV",
+      "historical_percentile": 0.755,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0075,
+        "7d": 0.001,
+        "90d": 0.0175
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.03,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 2.5,
+      "training_end_date": null,
+      "uncertainty_high": 0.0402,
+      "uncertainty_low": 0.0216
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.026,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.15,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Primary-balance direction"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.44,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Foreign-currency debt burden"
+        },
+        {
+          "available": true,
+          "contribution": 0.35,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Sovereign spread"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "SOV",
+      "historical_percentile": 0.755,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0075,
+        "7d": 0.002,
+        "90d": 0.0175
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.065,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 2.5,
+      "training_end_date": null,
+      "uncertainty_high": 0.0871,
+      "uncertainty_low": 0.0468
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.049,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.15,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Primary-balance direction"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.44,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Foreign-currency debt burden"
+        },
+        {
+          "available": true,
+          "contribution": 0.35,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Sovereign spread"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "SOV",
+      "historical_percentile": 0.755,
+      "horizon": "24m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0075,
+        "7d": 0.003,
+        "90d": 0.0175
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.1225,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 2.5,
+      "training_end_date": null,
+      "uncertainty_high": 0.1642,
+      "uncertainty_low": 0.0882
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.021,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.11,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Real policy rate"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.61,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Inflation acceleration"
+        },
+        {
+          "available": true,
+          "contribution": 0.29,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Broad-money growth"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "MON",
+      "historical_percentile": 0.821,
+      "horizon": "90d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0093,
+        "7d": 0.001,
+        "90d": 0.0217
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0651,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.1,
+      "training_end_date": null,
+      "uncertainty_high": 0.0872,
+      "uncertainty_low": 0.0469
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.038,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.11,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Real policy rate"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.61,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Inflation acceleration"
+        },
+        {
+          "available": true,
+          "contribution": 0.29,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Broad-money growth"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "MON",
+      "historical_percentile": 0.821,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0093,
+        "7d": 0.002,
+        "90d": 0.0217
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.1178,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.1,
+      "training_end_date": null,
+      "uncertainty_high": 0.1579,
+      "uncertainty_low": 0.0848
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.071,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.11,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Real policy rate"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.61,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Inflation acceleration"
+        },
+        {
+          "available": true,
+          "contribution": 0.29,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Broad-money growth"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "MON",
+      "historical_percentile": 0.821,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0093,
+        "7d": 0.003,
+        "90d": 0.0217
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.2201,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 3.1,
+      "training_end_date": null,
+      "uncertainty_high": 0.2949,
+      "uncertainty_low": 0.1585
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.015,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.2,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Institutional continuity"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.21,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Government-stability indicator"
+        },
+        {
+          "available": true,
+          "contribution": 0.14,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Regional stress"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "POL",
+      "historical_percentile": 0.645,
+      "horizon": "90d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0045,
+        "7d": 0.001,
+        "90d": 0.0105
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0225,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 1.5,
+      "training_end_date": null,
+      "uncertainty_high": 0.0301,
+      "uncertainty_low": 0.0162
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.028,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.2,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Institutional continuity"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.21,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Government-stability indicator"
+        },
+        {
+          "available": true,
+          "contribution": 0.14,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Regional stress"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "POL",
+      "historical_percentile": 0.645,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0045,
+        "7d": 0.002,
+        "90d": 0.0105
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.042,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 1.5,
+      "training_end_date": null,
+      "uncertainty_high": 0.0563,
+      "uncertainty_low": 0.0302
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.052,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.2,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Institutional continuity"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.21,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Government-stability indicator"
+        },
+        {
+          "available": true,
+          "contribution": 0.14,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Regional stress"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "POL",
+      "historical_percentile": 0.645,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0045,
+        "7d": 0.003,
+        "90d": 0.0105
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.078,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 1.5,
+      "training_end_date": null,
+      "uncertainty_high": 0.1045,
+      "uncertainty_low": 0.0562
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.002,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.23,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Institutional continuity"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.08,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Recent unconstitutional-change history"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "COUP",
+      "historical_percentile": 0.574,
+      "horizon": "90d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.001,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0017,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0023,
+      "uncertainty_low": 0.0012
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.004,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.23,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Institutional continuity"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.08,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Recent unconstitutional-change history"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "COUP",
+      "historical_percentile": 0.574,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.002,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0034,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0046,
+      "uncertainty_low": 0.0024
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.008,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.23,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Institutional continuity"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.08,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Recent unconstitutional-change history"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "COUP",
+      "historical_percentile": 0.574,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.003,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0068,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0091,
+      "uncertainty_low": 0.0049
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.004,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.16,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Recent domestic conflict"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.12,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Neighbor conflict exposure"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "CIV",
+      "historical_percentile": 0.574,
+      "horizon": "90d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.001,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0034,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0046,
+      "uncertainty_low": 0.0024
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.008,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.16,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Recent domestic conflict"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.12,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Neighbor conflict exposure"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "CIV",
+      "historical_percentile": 0.574,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.002,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0068,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0091,
+      "uncertainty_low": 0.0049
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.016,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.16,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Recent domestic conflict"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.12,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Neighbor conflict exposure"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "CIV",
+      "historical_percentile": 0.574,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.003,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0136,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0182,
+      "uncertainty_low": 0.0098
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.001,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.746,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.25,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Peaceful dyad history"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.1,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Regional interstate tension"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "WAR",
+      "historical_percentile": 0.574,
+      "horizon": "90d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.001,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0008,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.8,
+      "training_end_date": null,
+      "uncertainty_high": 0.0011,
+      "uncertainty_low": 0.0006
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.002,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.726,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.25,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Peaceful dyad history"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.1,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Regional interstate tension"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "WAR",
+      "historical_percentile": 0.574,
+      "horizon": "180d",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.002,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0017,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0023,
+      "uncertainty_low": 0.0012
+    },
+    {
+      "analysis_date": "2024-01-31",
+      "base_rate": 0.004,
+      "calibrated_probability": null,
+      "calibration_version": "none",
+      "confidence": 0.705,
+      "contrary_evidence": [
+        {
+          "available": true,
+          "contribution": -0.25,
+          "direction": "DECREASES_ESTIMATE",
+          "feature": "Peaceful dyad history"
+        }
+      ],
+      "contributors": [
+        {
+          "available": true,
+          "contribution": 0.1,
+          "direction": "INCREASES_ESTIMATE",
+          "feature": "Regional interstate tension"
+        }
+      ],
+      "country": "Türkiye",
+      "country_id": "TR",
+      "coverage": 0.82,
+      "display_label": "UNCALIBRATED_RISK_ESTIMATE",
+      "hazard": "WAR",
+      "historical_percentile": 0.574,
+      "horizon": "12m",
+      "model_tier": "MACRO_FINANCIAL",
+      "model_version": "0.1.0-demo",
+      "momentum": {
+        "30d": 0.0026,
+        "7d": 0.003,
+        "90d": 0.0059
+      },
+      "ood_status": "NOT_ASSESSED",
+      "probability_status": "UNCALIBRATED",
+      "raw_probability": 0.0034,
+      "regime": "MANAGED_FLOAT",
+      "relative_risk": 0.85,
+      "training_end_date": null,
+      "uncertainty_high": 0.0046,
+      "uncertainty_low": 0.0024
+    }
+  ],
+  "fx_stress": {
+    "country": "Türkiye",
+    "decomposition": [
+      {
+        "label": "Raw FX",
+        "value": 0.62
+      },
+      {
+        "label": "Reserve defense",
+        "value": 0.38
+      },
+      {
+        "label": "Rate defense",
+        "value": 0.17
+      },
+      {
+        "label": "Global factor",
+        "value": -0.24
+      },
+      {
+        "label": "Residual/local",
+        "value": 0.53
+      }
+    ],
+    "measures": [
+      {
+        "name": "Spot depreciation (30d)",
+        "status": "AVAILABLE",
+        "unit": "%",
+        "value": 0.061
+      },
+      {
+        "name": "Residual FX surprise",
+        "status": "AVAILABLE",
+        "unit": "z",
+        "value": 1.84
+      },
+      {
+        "name": "Exchange-market pressure",
+        "status": "AVAILABLE",
+        "unit": "z",
+        "value": 2.16
+      },
+      {
+        "name": "Reserve pressure",
+        "status": "AVAILABLE",
+        "unit": "z",
+        "value": -0.74
+      },
+      {
+        "name": "Parallel-market premium",
+        "status": "NOT_APPLICABLE",
+        "unit": "%",
+        "value": null
+      },
+      {
+        "name": "Option risk reversal",
+        "status": "MISSING",
+        "unit": "vol pts",
+        "value": null
+      }
+    ],
+    "percentile": 0.91,
+    "regime": "MANAGED_FLOAT",
+    "status": "SYNTHETIC_FIXTURE"
+  },
+  "hazards": [
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "FX",
+      "label": "Currency / balance-of-payments crisis",
+      "supported_horizons": [
+        "90d",
+        "180d",
+        "12m",
+        "24m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "BANK",
+      "label": "Systemic banking crisis",
+      "supported_horizons": [
+        "12m",
+        "24m",
+        "36m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "SOV",
+      "label": "Sovereign distress / default",
+      "supported_horizons": [
+        "180d",
+        "12m",
+        "24m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "MON",
+      "label": "Monetary / inflation crisis",
+      "supported_horizons": [
+        "90d",
+        "180d",
+        "12m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "POL",
+      "label": "Major political-instability crisis",
+      "supported_horizons": [
+        "90d",
+        "180d",
+        "12m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "COUP",
+      "label": "Coup / unconstitutional change",
+      "supported_horizons": [
+        "90d",
+        "180d",
+        "12m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "CIV",
+      "label": "Internal armed-conflict onset",
+      "supported_horizons": [
+        "90d",
+        "180d",
+        "12m"
+      ]
+    },
+    {
+      "definition_version": "0.1.0",
+      "hazard_type": "WAR",
+      "label": "Interstate armed-conflict onset",
+      "supported_horizons": [
+        "90d",
+        "180d",
+        "12m"
+      ]
+    }
+  ],
+  "historical_analogues": [
+    {
+      "country": "Synthetic analogue A",
+      "coverage": 0.78,
+      "date": "2008-09-30",
+      "event_type": null,
+      "outcome": "No qualifying onset within 12 months",
+      "regime": "MANAGED_FLOAT",
+      "similarity": 0.84,
+      "time_to_event_days": null
+    },
+    {
+      "country": "Synthetic analogue B",
+      "coverage": 0.81,
+      "date": "2013-06-30",
+      "event_type": "FX",
+      "outcome": "Synthetic FX onset after 214 days",
+      "regime": "MANAGED_FLOAT",
+      "similarity": 0.79,
+      "time_to_event_days": 214
+    },
+    {
+      "country": "Synthetic analogue C",
+      "coverage": 0.69,
+      "date": "2018-08-31",
+      "event_type": "MON",
+      "outcome": "Synthetic monetary onset after 301 days",
+      "regime": "CRAWLING_PEG",
+      "similarity": 0.74,
+      "time_to_event_days": 301
+    }
+  ],
+  "historical_timeline": [
+    {
+      "date": "2023-02-28",
+      "estimate": 0.12,
+      "hazard": "FX",
+      "vintage_status": "RECONSTRUCTED"
+    },
+    {
+      "date": "2023-05-31",
+      "estimate": 0.15,
+      "hazard": "FX",
+      "vintage_status": "RECONSTRUCTED"
+    },
+    {
+      "date": "2023-08-31",
+      "estimate": 0.18,
+      "hazard": "FX",
+      "vintage_status": "RECONSTRUCTED"
+    },
+    {
+      "date": "2023-11-30",
+      "estimate": 0.21,
+      "hazard": "FX",
+      "vintage_status": "RECONSTRUCTED"
+    },
+    {
+      "date": "2024-01-31",
+      "estimate": 0.241,
+      "hazard": "FX",
+      "vintage_status": "RECONSTRUCTED"
+    },
+    {
+      "date": "2018-08-13",
+      "estimate": null,
+      "event_onset": true,
+      "hazard": "FX",
+      "vintage_status": "SYNTHETIC_EVENT_FIXTURE"
+    }
+  ],
+  "limitations": [
+    "Every numerical value and historical event in this example is synthetic.",
+    "No empirical event labels, training, final test, calibration, or alert-threshold validation were used.",
+    "Reconstructed point-in-time status is not a genuine real-time backtest.",
+    "Parallel-rate and option evidence are unavailable or not applicable in the fixture.",
+    "Hazards are dependent; no overall any-crisis probability is calculated.",
+    "Predictive contributors are associations and are not causal findings."
+  ],
+  "macro_vulnerability": {
+    "dimensions": [
+      {
+        "direction": "DETERIORATING",
+        "name": "External balance",
+        "score": 0.68
+      },
+      {
+        "direction": "DETERIORATING",
+        "name": "Reserve adequacy",
+        "score": 0.73
+      },
+      {
+        "direction": "STABLE",
+        "name": "Credit cycle",
+        "score": 0.49
+      },
+      {
+        "direction": "DETERIORATING",
+        "name": "Sovereign balance sheet",
+        "score": 0.58
+      },
+      {
+        "direction": "DETERIORATING",
+        "name": "Inflation pressure",
+        "score": 0.77
+      },
+      {
+        "direction": "STABLE",
+        "name": "Political structure",
+        "score": 0.41
+      }
+    ],
+    "status": "SYNTHETIC_FIXTURE"
+  },
+  "methodology_version": "0.1.0",
+  "model_version": "0.1.0-demo",
+  "provenance": [
+    {
+      "country_id": "TR",
+      "currency_id": "TRY",
+      "feature_id": "demo.emp",
+      "frequency": "MONTHLY",
+      "license": "CC0-1.0 synthetic fixture",
+      "period_end": "2024-01-31",
+      "period_start": "2024-01-01",
+      "provenance_type": "SYNTHETIC",
+      "provider": "FX-CPM",
+      "release_date": "2024-01-31",
+      "retrieval_date": "2024-01-31",
+      "revision_status": "FIXED",
+      "source_authority": 0.0,
+      "source_name": "FX-CPM synthetic fixture",
+      "source_quality": 1.0,
+      "source_type": "SYNTHETIC",
+      "source_url": "https://example.invalid/fx-cpm/synthetic-fixture",
+      "status": "AVAILABLE",
+      "transformation_lineage": [
+        "synthetic_spot",
+        "synthetic_reserves",
+        "emp_formula_v0.1.0"
+      ],
+      "unit": "z",
+      "value": 2.16,
+      "vintage": "synthetic-v1"
+    },
+    {
+      "country_id": "TR",
+      "currency_id": "TRY",
+      "feature_id": "demo.option_risk_reversal",
+      "frequency": "DAILY",
+      "license": "CC0-1.0 synthetic fixture",
+      "period_end": "2024-01-31",
+      "period_start": "2024-01-31",
+      "provenance_type": "SYNTHETIC",
+      "provider": "FX-CPM",
+      "release_date": "2024-01-31",
+      "retrieval_date": "2024-01-31",
+      "revision_status": "FIXED",
+      "source_authority": 0.0,
+      "source_name": "FX-CPM synthetic fixture",
+      "source_quality": 1.0,
+      "source_type": "SYNTHETIC",
+      "source_url": "https://example.invalid/fx-cpm/synthetic-fixture",
+      "status": "MISSING",
+      "transformation_lineage": [],
+      "unit": "volatility points",
+      "value": null,
+      "vintage": "synthetic-v1"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_health": {
+    "failed": 0,
+    "healthy": 5,
+    "items": [
+      {
+        "source": "Synthetic macro fixture",
+        "status": "AVAILABLE"
+      },
+      {
+        "source": "Synthetic market fixture",
+        "status": "STALE"
+      }
+    ],
+    "stale": 1,
+    "status": "DEMONSTRATION_ONLY"
+  },
+  "validation": {
+    "chronological_split": false,
+    "event_count": 0,
+    "final_test_untouched": true,
+    "fx_ablation": {
+      "delta_average_precision": null,
+      "delta_brier": null,
+      "delta_log_loss": null
+    },
+    "message": "Synthetic fixture: no empirical backtest has been run.",
+    "metrics": {
+      "average_precision": null,
+      "brier_score": null,
+      "log_loss": null
+    },
+    "status": "NOT_RUN",
+    "test_window": null
+  }
+}
