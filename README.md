@@ -91,6 +91,20 @@ python scripts/export_pdf.py output/html/example_report.html output/pdf/example_
 
 The exporter uses A4 landscape, CSS page size, exact print colors, static chart content, and printed backgrounds.
 
+Platform launchers generate the canonical JSON, self-contained HTML, and PDF report in `output/` from any working directory:
+
+```bash
+# Linux
+./run_report.sh
+```
+
+```bat
+rem Windows Command Prompt or PowerShell
+.\run_report.bat
+```
+
+Both launchers prefer the repository's `.venv` Python and accept additional CLI arguments. For example, `./run_report.sh --countries tr,ar,br` or `run_report.bat --countries tr,ar,br` changes the country selection while retaining the standard output paths.
+
 ## Normalized historical panel
 
 `scripts/build_historical_panel.py` selects the eligible vintage for each series/period without look-ahead:
